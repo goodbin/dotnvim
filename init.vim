@@ -4,32 +4,38 @@
 " ================================================================================
 
 function! DoRemote(arg)
-  UpdateRemotePlugins
+    UpdateRemotePlugins
 endfunction
 
-" Vim-plugin =====================================================================
+" =============================  VIM-Plug  =======================================
 filetype off
 call plug#begin()
-" тулбар 
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 
-" автокомплит
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-Plug 'landaire/deoplete-d'
+" Airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
-" темы
-Plug 'chriskempson/vim-tomorrow-theme'
+" GIT
+Plug 'airblade/vim-gitgutter'
 
-" файловый трей
+" NERDTree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" Autocomplete
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+
+" Colorschemes
+Plug 'morhetz/gruvbox'
+
+
 call plug#end()
 filetype plugin indent on
+"^================================ VIM-Plug ======================================
 
+" Settings autocomplete plugin
 call deoplete#enable()
-let g:deoplete#sources#d#dcd_client_binary = '/home/oleg/Distrib/DTool/DCD/dcd-client'
-let g:deoplete#sources#d#dcd_server_binary = '/home/oleg/Distrib/DTool/DCD/dcd-server'
-let g:deoplete#sources#d#dcd_server_autostart = 1
+
+syntax on
 
 " Default Whitespace
 set tabstop=4
@@ -37,36 +43,60 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-syntax enable
-set number showmatch
+set number
 
-colorscheme Tomorrow-Night
+" ---
+" Font
+" ---
+set encoding=utf-8
+
+" ---
+" Theme
+" ---
+" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" set t_Co=256
+set background=dark
+"let g:gruvbox_contrast_dark='soft'
+let g:gruvbox_invert_signs=0
+let g:gruvbox_sign_column='dark0'
+colorscheme gruvbox
+
+" ---
+" AirLine
+" ---
+" Set theme
+let g:airline_theme = 'gruvbox'
+" Show airline with single file
+set laststatus=2
+" Use powerline font
+let g:airline_powerline_fonts = 1
+" Enable tabline
+let g:airline#extensions#tabline#enabled = 1
+
+" Searching and highlines
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase           
 
 " =====================================================================
 "                         MAPPINGS
 " =====================================================================
-" Better ESC
+let g:mapleader=','
+
 map <C-n> :NERDTreeToggle<CR>
 
-
-
-
-" Wrapping text by default
-" set wrap
-"set linebreak
-
-" Searching and highlines
-"set hlsearch
-"set incsearch
-"set ignorecase
-"set smartcase
-"nnoremap <silent> <Space> :nohl<Bar>:echo<CR>
+" Learn it the hard way
+nmap <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
 
 " Keep more content at the bottom of the buffer
-"set scrolloff=3
+set scrolloff=5
 
 " Highlight cirsor line
-"set cursorline
+set cursorline
 
 " Tab completion
 "set wildmenu
@@ -85,22 +115,4 @@ map <C-n> :NERDTreeToggle<CR>
 "set showcmd
 "set hidden
 "set history=1000
-
-" =====================================================================
-"                        Terminal
-" ====================================================================
-" 256 colors for terminal vim
-" set t_Co=256
-
-" Making cursor a bar in insert mode
-" if exists('$TMUX')
-"     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-"    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-" else
-"    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-"    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-"endif
-
-
-
 

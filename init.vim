@@ -27,6 +27,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 " Colorschemes
 Plug 'morhetz/gruvbox'
 
+" Russian keymap
+Plug 'lyokha/vim-xkbswitch'
 
 call plug#end()
 filetype plugin indent on
@@ -34,6 +36,9 @@ filetype plugin indent on
 
 " Settings autocomplete plugin
 call deoplete#enable()
+
+let g:XkbSwitchEnabled = 1
+let g:XkbSwitchIMappings = ['ru']
 
 syntax on
 

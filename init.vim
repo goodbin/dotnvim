@@ -58,8 +58,8 @@ set encoding=utf-8
 " ---
 " Theme
 " ---
-" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-" set t_Co=256
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
 set background=dark
 "let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_invert_signs=0

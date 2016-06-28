@@ -14,3 +14,9 @@ mv PowerlineSymbols.otf ~/.fonts/
 fc-cache -vf ~/.fonts/
 
 mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+
+
+====================================================================================
+C-w <стрелочки> - перемещение по окнам
+
+

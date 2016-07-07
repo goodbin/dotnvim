@@ -103,21 +103,7 @@ set scrolloff=5
 " Highlight cirsor line
 set cursorline
 
-" Tab completion
-"set wildmenu
-"set wildmode=list:longest,list:full
-"set wildignore+=*.o,*.obj,.git,.idea/*
-
-" Allow backspacing over everything in insert mode
-"set backspace=indent,eol,start
-
-" Directories for swp files
-"set backupdir=~/.config/nvim/vim_backups//
-"set directory=~/.config/nvim/vim_backups//
-"set viewdir=~/.config/nvim/vim_backups//
-
-" Show (partical) command in the status line
-"set showcmd
-"set hidden
-"set history=1000
+" Настройка общего буфера обмена с ОС
+" Необходимо установить xsel 
+set clipboard+=unnamedplus
 

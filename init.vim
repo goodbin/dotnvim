@@ -3,36 +3,12 @@
 "                                  Author: Oleg Lelenkov
 " ================================================================================
 
-function! DoRemote(arg)
-    UpdateRemotePlugins
-endfunction
+source plug.vim
 
-" =============================  VIM-Plug  =======================================
-filetype off
-call plug#begin()
 
-" Airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 
-" GIT
-Plug 'airblade/vim-gitgutter'
 
-" NERDTree
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
-" Autocomplete
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-
-" Colorschemes
-Plug 'morhetz/gruvbox'
-
-" Russian keymap
-Plug 'lyokha/vim-xkbswitch'
-
-call plug#end()
-filetype plugin indent on
-"^================================ VIM-Plug ======================================
 
 " Settings autocomplete plugin
 call deoplete#enable()
@@ -106,4 +82,7 @@ set cursorline
 " Настройка общего буфера обмена с ОС
 " Необходимо установить xsel 
 set clipboard+=unnamedplus
+
+set nobackup 
+set noswapfile
 

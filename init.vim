@@ -3,7 +3,7 @@
 "                                  Author: Oleg Lelenkov
 " ================================================================================
 
-source plug.vim
+source ~/.config/nvim/plug.vim
 
 
 

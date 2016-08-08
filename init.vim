@@ -5,11 +5,6 @@
 
 source ~/.config/nvim/plug.vim
 
-
-
-
-
-
 " Settings autocomplete plugin
 call deoplete#enable()
 
@@ -65,7 +60,7 @@ set smartcase
 " =====================================================================
 let g:mapleader=','
 
-map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeFocus<CR>
 
 " Learn it the hard way
 nmap <up> <nop>
@@ -85,4 +80,9 @@ set clipboard+=unnamedplus
 
 set nobackup 
 set noswapfile
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 

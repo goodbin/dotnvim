@@ -19,6 +19,10 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
+set cindent
+set smartindent
+set autoindent
+
 set number
 
 " ---

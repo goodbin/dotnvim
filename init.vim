@@ -86,3 +86,7 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+" if you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsUsePythonVersion = 3
+let g:UltiSnipsSnippetDirectories=["~/.config/nvim/plugged/DSnips/", "~/.config/nvim/UltiSnips/"]

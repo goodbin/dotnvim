@@ -19,6 +19,9 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeFocus' }          " Файловы
 
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }     " Автокомплит
 
+Plug 'SirVer/ultisnips'                                         " Сниппеты
+Plug 'kiith-sa/DSnips'
+
 Plug 'morhetz/gruvbox'                                          " Цветовая схема
 
 Plug 'lyokha/vim-xkbswitch'                                     " Автоматическое переключение раскладки

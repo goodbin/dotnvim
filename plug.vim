@@ -28,6 +28,8 @@ Plug 'lyokha/vim-xkbswitch'                                     " Автомат
 
 " Поддержка языков
 Plug 'mustache/vim-mustache-handlebars'                         
+
+Plug 'JesseKPhillips/d.vim'
 call plug#end()
 filetype plugin indent on
 

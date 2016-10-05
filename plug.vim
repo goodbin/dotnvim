@@ -26,6 +26,8 @@ Plug 'morhetz/gruvbox'                                          " Цветова
 
 Plug 'lyokha/vim-xkbswitch'                                     " Автоматическое переключение раскладки
 
+Plug 'vim-scripts/vim-auto-save'                                " автоматическое сохранение
+
 " Поддержка языков
 Plug 'mustache/vim-mustache-handlebars'                         
 

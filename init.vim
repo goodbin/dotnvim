@@ -96,3 +96,9 @@ let g:UltiSnipsUsePythonVersion = 3
 
 let g:UltiSnipsSnippetDirectories=[$HOME."/.config/nvim/UltiSnips", $HOME."/.config/nvim/plugged/DSnips"]
 
+NERDTreeFocus
+
+" Auto-Save
+let g:auto_save = 1
+let g:auto_save_in_insert_mode = 0
+

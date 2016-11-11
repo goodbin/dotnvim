@@ -102,3 +102,16 @@ NERDTreeFocus
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
 
+"=============НАСТРОЙКИ СВОРАЧИВАНИЯ БЛОКОВ КОДА (фолдинг)=============
+set foldenable " отклключить фолдинг по умолчанию
+setlocal foldmethod=syntax " определять блоки на основе синтаксиса файла
+set foldnestmax=3       "deepest fold is 3 levels
+"set foldcolumn=10 " показать полосу для управления сворачиванием
+set foldlevel=1 " Первый уровень вложенности открыт, остальные закрыты
+"set foldopen=all " автоматическое открытие сверток при заходе в них
+
+:nnoremap <space> za
+
+set exrc
+
+let g:NERDSpaceDelims = 1

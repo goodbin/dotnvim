@@ -3,115 +3,54 @@
 "                                  Author: Oleg Lelenkov
 " ================================================================================
 
-source ~/.config/nvim/plug.vim
+function! DoRemote(arg)
+    UpdateRemotePlugins
+endfunction
 
-" Settings autocomplete plugin
-call deoplete#enable()
 
-let g:XkbSwitchEnabled = 1
-let g:XkbSwitchIMappings = ['ru']
+filetype off
+call plug#begin()
 
-syntax on
+Plug 'morhetz/gruvbox'                                          " Цветовая схема
 
-" Default Whitespace
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
+Plug 'vim-airline/vim-airline'                                  " Статусная строка 
+Plug 'vim-airline/vim-airline-themes'                           " Темы для статустой строки 
 
-set cindent
-set smartindent
-set autoindent
+Plug 'vim-scripts/vim-auto-save'                                " автоматическое сохранение
 
-set number
+Plug 'SirVer/ultisnips'                                         " Сниппеты
+Plug 'honza/vim-snippets'
+Plug 'kiith-sa/DSnips'
 
-" ---
-" Font
-" ---
-set encoding=utf-8
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeFocus' }          " Файловый менеджер / дерево каталогов
+Plug 'scrooloose/nerdcommenter'
 
-" ---
-" Theme
-" ---
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }     " Автокомплит
 
-set background=dark
-"let g:gruvbox_contrast_dark='soft'
-let g:gruvbox_invert_signs=0
-let g:gruvbox_sign_column='dark0'
-colorscheme gruvbox
+Plug 'airblade/vim-gitgutter'                                   " Подсветка измененных строк по версии git
+Plug 'lyokha/vim-xkbswitch'                                     " Автоматическое переключение раскладки
 
-" ---
-" AirLine
-" ---
-" Set theme
-let g:airline_theme = 'gruvbox'
-" Show airline with single file
-set laststatus=2
-" Use powerline font
-let g:airline_powerline_fonts = 1
-" Enable tabline
-let g:airline#extensions#tabline#enabled = 1
+" Поддержка языков
 
-" Searching and highlines
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase           
+Plug 'Bashka/vim_lib'
+Plug 'Bashka/vim_prj'
+Plug 'Bashka/vim_template'                                      " шаблоны файлов
 
-" =====================================================================
-"                         MAPPINGS
-" =====================================================================
-let g:mapleader=','
+" Plug 'JesseKPhillips/d.vim'
+" Plug 'leafgarland/typescript-vim'
+" Plug 'mustache/vim-mustache-handlebars'                         
+" Plug 'posva/vim-vue'
 
-map <C-n> :NERDTreeFocus<CR>
+call plug#end()
+filetype plugin indent on
+filetype plugin on
 
-" Learn it the hard way
-nmap <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
 
-" Keep more content at the bottom of the buffer
-set scrolloff=5
+source $HOME/.config/nvim/settings/theme.vim
+source $HOME/.config/nvim/settings/common.vim
+source $HOME/.config/nvim/settings/keymapping.vim
+source $HOME/.config/nvim/settings/nerdtree.vim
+source $HOME/.config/nvim/settings/airline.vim
+source $HOME/.config/nvim/settings/snippets.vim
+source $HOME/.config/nvim/settings/autocomplete.vim
 
-" Highlight cirsor line
-set cursorline
-
-" Настройка общего буфера обмена с ОС
-" Необходимо установить xsel 
-set clipboard+=unnamedplus
-
-set nobackup 
-set noswapfile
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" if you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsUsePythonVersion = 3
-
-let g:UltiSnipsSnippetDirectories=[$HOME."/.config/nvim/UltiSnips", $HOME."/.config/nvim/plugged/DSnips"]
-
-NERDTreeFocus
-
-" Auto-Save
-let g:auto_save = 1
-let g:auto_save_in_insert_mode = 0
-
-"=============НАСТРОЙКИ СВОРАЧИВАНИЯ БЛОКОВ КОДА (фолдинг)=============
-set foldenable " отклключить фолдинг по умолчанию
-setlocal foldmethod=syntax " определять блоки на основе синтаксиса файла
-set foldnestmax=3       "deepest fold is 3 levels
-"set foldcolumn=10 " показать полосу для управления сворачиванием
-set foldlevel=1 " Первый уровень вложенности открыт, остальные закрыты
-"set foldopen=all " автоматическое открытие сверток при заходе в них
-
-:nnoremap <space> za
-
-set exrc
-
-let g:NERDSpaceDelims = 1

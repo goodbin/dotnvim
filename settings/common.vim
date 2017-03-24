@@ -52,6 +52,8 @@ set foldcolumn=3 " показать полосу для управления с�
 " Auto-Save
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
- 
+
+" let g:auto_save_postsave_hook = '!/home/oleg/Development/Private/prelum/prelum-cli/pdf.sh'
+
 set exrc
 

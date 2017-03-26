@@ -36,6 +36,10 @@ Plug 'Bashka/vim_template'                                      " шаблоны
 
 Plug 'posva/vim-vue', { 'for': 'vue' }
 
+Plug 'easymotion/vim-easymotion'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-fugitive'
+
 call plug#end()
 filetype plugin indent on
 filetype plugin on

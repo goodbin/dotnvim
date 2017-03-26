@@ -46,6 +46,8 @@ filetype plugin indent on
 filetype plugin on
 
 
+source $HOME/.config/nvim/settings/functions.vim
+
 source $HOME/.config/nvim/settings/theme.vim
 source $HOME/.config/nvim/settings/common.vim
 source $HOME/.config/nvim/settings/keymapping.vim
@@ -56,3 +58,4 @@ source $HOME/.config/nvim/settings/airline.vim
 source $HOME/.config/nvim/settings/snippets.vim
 source $HOME/.config/nvim/settings/autocomplete.vim
 source $HOME/.config/nvim/settings/easymotion.vim
+

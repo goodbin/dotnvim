@@ -39,6 +39,7 @@ Plug 'posva/vim-vue', { 'for': 'vue' }
 Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
+Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 filetype plugin indent on
@@ -54,3 +55,4 @@ source $HOME/.config/nvim/settings/nerdcommenter.vim
 source $HOME/.config/nvim/settings/airline.vim
 source $HOME/.config/nvim/settings/snippets.vim
 source $HOME/.config/nvim/settings/autocomplete.vim
+source $HOME/.config/nvim/settings/easymotion.vim

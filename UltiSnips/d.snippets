@@ -3,3 +3,11 @@ import std.stdio: wl = writeln;
 wl(${0});
 endsnippet
 
+snippet test "create dunit test method"
+@Test
+void test${1}()
+{
+    ${0}
+}
+endsnippet
+

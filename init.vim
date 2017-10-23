@@ -21,7 +21,7 @@ Plug 'SirVer/ultisnips'                                         " Сниппет
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeFocus' }          " Файловый менеджер / дерево каталогов
 Plug 'scrooloose/nerdcommenter'
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'tag': '3.0' }
 
 Plug 'airblade/vim-gitgutter'                                   " Подсветка измененных строк по версии git
 

@@ -21,7 +21,7 @@ Plug 'SirVer/ultisnips'                                         " Сниппет
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeFocus' }          " Файловый менеджер / дерево каталогов
 Plug 'scrooloose/nerdcommenter'
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }     " Автокомплит
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'airblade/vim-gitgutter'                                   " Подсветка измененных строк по версии git
 
@@ -39,7 +39,6 @@ Plug 'editorconfig/editorconfig-vim'                            " .editorconfig
 call plug#end()
 filetype plugin indent on
 filetype plugin on
-
 
 source $HOME/.config/nvim/settings/functions.vim
 

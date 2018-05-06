@@ -20,7 +20,11 @@ endfunction
 
 function! GetModule()
     let l:skip_module_dir = exists("g:skip_module_dir") ? g:skip_module_dir : ["source", "test"]
+    " замена слешей на точки
     let l:module = substitute(expand("%:r"), "/", ".", "g")
-    return substitute(l:module, '^\('.join(l:skip_module_dir, '\|').'\).', "", "g")
+    " вырезаем название директорий с исходниками
+    let l:ret = substitute(l:module, '^\('.join(l:skip_module_dir, '\|').'\).', "", "g")
+    " вырезаем ключевое слово package
+    return substitute(ret, "\\.package", "", "g")
 endfunction
 

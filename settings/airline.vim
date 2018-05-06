@@ -3,9 +3,6 @@
 "                                  Author: Oleg Lelenkov
 " ================================================================================
 
-" ---
-" AirLine
-" ---
 " Set theme
 let g:airline_theme = 'gruvbox'
 " Show airline with single file

@@ -3,6 +3,6 @@
 "                                  Author: Oleg Lelenkov
 " ================================================================================
 
-map <C-n> :NERDTreeFocus<CR>
+map <C-n> :NERDTreeToggle<CR>
 
-let g:NERDSpaceDelims = 1
+" let NERDTreeAutoDeleteBuffer = 1

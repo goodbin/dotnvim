@@ -3,7 +3,14 @@
 "                                  Author: Oleg Lelenkov
 " ================================================================================
 
-syntax on
+filetype plugin indent on
+filetype plugin on
+
+syntax enable
+
+set number
+set ttimeout
+set ttimeoutlen=100
 
 " Default Whitespace
 set tabstop=4
@@ -12,19 +19,26 @@ set softtabstop=4
 set expandtab
 
 set cindent
-set smartindent
 set autoindent
+set backspace=indent,eol,start
+set complete-=i
 
-set number
+set smarttab
+set smartindent
 
 " Searching and highlines
-set hlsearch
+" set hlsearch
 set incsearch
-set ignorecase
-set smartcase
+" set ignorecase
+" set smartcase
 
 " Keep more content at the bottom of the buffer
 set scrolloff=5
+set wildmenu
+set ruler
+set scrolloff=1
+set sidescrolloff=5
+set display+=lastline
 
 " Highlight cirsor line
 set cursorline
@@ -33,28 +47,47 @@ set nobackup
 set noswapfile
 
 set encoding=utf-8
+set autoread
 
 " Настройка общего буфера обмена с ОС
 " Необходимо установить xsel 
 set clipboard+=unnamedplus
 
+if &listchars ==# 'eol:$'
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
+
+if &shell =~# 'fish$' && (v:version < 704 || v:version == 704 && !has('patch276'))
+  set shell=/bin/bash
+endif
+
+if &history < 1000
+  set history=1000
+endif
+
+if &tabpagemax < 50
+  set tabpagemax=50
+endif
+
+if !empty(&viminfo)
+  set viminfo^=!
+endif
+set sessionoptions-=options
+
 "=============НАСТРОЙКИ СВОРАЧИВАНИЯ БЛОКОВ КОДА (фолдинг)=============
-" set foldenable " отклключить фолдинг по умолчанию
+set foldenable " включить фолдинг по умолчанию
 set foldmethod=syntax " определять блоки на основе синтаксиса файла
 " set foldnestmax=3       "deepest fold is 3 levels
-set foldcolumn=3 " показать полосу для управления сворачиванием
+" set foldcolumn=3 " показать полосу для управления сворачиванием
 " set foldlevel=1 " Первый уровень вложенности открыт, остальные закрыты
 " set foldopen=all " автоматическое открытие сверток при заходе в них
 
 :nnoremap <space> za
 
-
 " Auto-Save
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
 
-" let g:auto_save_postsave_hook = '!/home/oleg/Development/Private/prelum/prelum-cli/pdf.sh'
-set colorcolumn=120
+set colorcolumn=90
 
 set exrc
-

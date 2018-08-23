@@ -5,4 +5,4 @@
 
 map <C-n> :NERDTreeToggle<CR>
 
-" let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeAutoDeleteBuffer = 1

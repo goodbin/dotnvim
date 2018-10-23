@@ -8,8 +8,8 @@ Plug 'vim-airline/vim-airline'                                  " Статусн
 Plug 'vim-airline/vim-airline-themes'                           " Темы для статустой строки
 
 Plug 'vim-scripts/vim-auto-save'                                " автоматическое сохранение
-
 Plug 'lyokha/vim-xkbswitch'                                     " Автоматическое переключение раскладки
+
 Plug 'editorconfig/editorconfig-vim'                            " .editorconfig
 
 Plug 'airblade/vim-gitgutter'                                   " Подсветка измененных строк по версии git
@@ -23,11 +23,10 @@ Plug 'SirVer/ultisnips'                                         " Сниппет
 Plug 'scrooloose/nerdtree'                                      " Файловый менеджер / дерево каталогов
 Plug 'scrooloose/nerdcommenter'
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
 Plug 'morhetz/gruvbox'                                          " Цветовая схема
 Plug 'ryanoasis/vim-devicons'
+
+" Languages
 call plug#end()
 
 filetype plugin indent on

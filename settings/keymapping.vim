@@ -7,7 +7,7 @@ set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
 
-"" Learn it the hard way
+" Learn it the hard way
 nmap <up> <nop>
 map <down> <nop>
 map <left> <nop>

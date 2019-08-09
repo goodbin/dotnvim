@@ -45,6 +45,7 @@ set cursorline
 
 set nobackup 
 set noswapfile
+set noundofile
 
 set encoding=utf-8
 set autoread

@@ -15,10 +15,9 @@ Plug 'editorconfig/editorconfig-vim'                            " .editorconfig
 Plug 'airblade/vim-gitgutter'                                   " Подсветка измененных строк по версии git
 
 Plug 'ncm2/ncm2'
-Plug 'goodbin/ncm2-d', { 'for': 'd' }
+Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
-Plug 'roxma/nvim-yarp'
 
 Plug 'aperezdc/vim-template'                                    " Шаблоны
 
@@ -31,6 +30,13 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'morhetz/gruvbox'                                          " Цветовая схема
 Plug 'ryanoasis/vim-devicons'
 
+" Languages support
+Plug 'sirtaj/vim-openscad'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+\}
+
 call plug#end()
 
 
@@ -39,6 +45,7 @@ filetype plugin on
 
 source $HOME/.config/nvim/settings/functions.vim
 source $HOME/.config/nvim/settings/common.vim
+source $HOME/.config/nvim/settings/editorconfig.vim
 source $HOME/.config/nvim/settings/keymapping.vim
 source $HOME/.config/nvim/settings/theme.vim
 source $HOME/.config/nvim/settings/airline.vim
@@ -49,4 +56,6 @@ source $HOME/.config/nvim/settings/template.vim
 source $HOME/.config/nvim/settings/nerdtree.vim
 source $HOME/.config/nvim/settings/nerdcommenter.vim
 source $HOME/.config/nvim/settings/snippets.vim
+
+source $HOME/.config/nvim/settings/languages.vim
 

@@ -37,6 +37,8 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
 \}
 
+Plug 'sheerun/vim-polyglot'
+
 call plug#end()
 
 

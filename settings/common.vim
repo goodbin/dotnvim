@@ -4,8 +4,6 @@
 " ================================================================================
 
 filetype plugin indent on
-filetype plugin on
-
 syntax enable
 
 set number
@@ -89,7 +87,14 @@ set foldmethod=syntax " определять блоки на основе син
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
 
-set colorcolumn=90
+set colorcolumn=120
+
+set guioptions= "Отключаем панели прокрутки в GUI
+set showtabline=0 "Отключаем панель табов (окошки FTW)
+
+"wrap заставляет переносить строчки без их разделения
+"Соответсвенно nowrap рендерит строчки за границами экрана
+set wrap linebreak nolist "Данная вариация работает как wrap  но переносит строчки не посимвольно, а по словам
 
 set exrc
 

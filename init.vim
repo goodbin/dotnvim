@@ -4,6 +4,7 @@
 " ================================================================================
 
 call plug#begin()
+
 Plug 'vim-airline/vim-airline'                                  " Статусная строка
 Plug 'vim-airline/vim-airline-themes'                           " Темы для статустой строки
 
@@ -13,6 +14,7 @@ Plug 'lyokha/vim-xkbswitch'                                     " Автомат
 Plug 'editorconfig/editorconfig-vim'                            " .editorconfig
 
 Plug 'airblade/vim-gitgutter'                                   " Подсветка измененных строк по версии git
+Plug 'tpope/vim-fugitive'                                       " Работа с Git
 
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
@@ -43,12 +45,12 @@ call plug#end()
 
 
 filetype plugin indent on
-filetype plugin on
 
 source $HOME/.config/nvim/settings/functions.vim
 source $HOME/.config/nvim/settings/common.vim
-source $HOME/.config/nvim/settings/editorconfig.vim
 source $HOME/.config/nvim/settings/keymapping.vim
+
+source $HOME/.config/nvim/settings/editorconfig.vim
 source $HOME/.config/nvim/settings/theme.vim
 source $HOME/.config/nvim/settings/airline.vim
 

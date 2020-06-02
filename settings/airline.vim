@@ -3,6 +3,9 @@
 "                                  Author: Oleg Lelenkov
 " ================================================================================
 
+Plug 'vim-airline/vim-airline'                                  " Статусная строка
+Plug 'vim-airline/vim-airline-themes'                           " Темы для статустой строки
+
 " Set theme
 let g:airline_theme = 'gruvbox'
 " Show airline with single file

@@ -3,47 +3,21 @@
 "                                  Author: Oleg Lelenkov
 " ================================================================================
 
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-ultisnips'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+" Plug 'ncm2/ncm2-vim-lsp'
+
 " enable ncm2 for all buffers
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-let g:LanguageClient_serverCommands = {
-    \ 'd': ['/home/oleg/.dub/packages/.bin/dls-latest/dls']
-    \ }
-
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-let g:LanguageClient_diagnosticsEnable = 1
-let g:LanguageClient_useVirtualText = 1
-
-let g:LanguageClient_diagnosticsDisplay = {
-\        1: {
-\            "name": "Error",
-\            "texthl": "ALEError",
-\            "signText": "✖",
-\            "signTexthl": "ALEErrorSign",
-\            "virtualTexthl": "Error",
-\        },
-\        2: {
-\            "name": "Warning",
-\            "texthl": "ALEWarning",
-\            "signText": "⚠",
-\            "signTexthl": "ALEWarningSign",
-\            "virtualTexthl": "TabLineFill",
-\        },
-\        3: {
-\            "name": "Information",
-\            "texthl": "ALEInfo",
-\            "signText": "ℹ",
-\            "signTexthl": "ALEInfoSign",
-\            "virtualTexthl": "Todo",
-\        },
-\        4: {
-\            "name": "Hint",
-\            "texthl": "ALEInfo",
-\            "signText": "➤",
-\            "signTexthl": "ALEInfoSign",
-\            "virtualTexthl": "Todo",
-\        },
-\    }
+" Press enter key to trigger snippet expansion
+" The parameters are the same as `:help feedkeys()`
+inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 

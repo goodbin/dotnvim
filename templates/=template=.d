@@ -1,5 +1,5 @@
 /**
- *  %HERE%
+ * %HERE%
  *
  * Copyright: %COPY%
  * License: %LICENSE%

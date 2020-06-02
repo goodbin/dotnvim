@@ -16,7 +16,6 @@ source $HOME/.config/nvim/settings/lsp.vim
 source $HOME/.config/nvim/settings/languages.vim
 
 Plug 'airblade/vim-gitgutter'           " Подсветка измененных строк по версии git
-" Plug 'kshenoy/vim-signature'		" Работа с закладками
 
 call plug#end()
 filetype plugin indent on

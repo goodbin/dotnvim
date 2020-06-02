@@ -2,12 +2,10 @@
 "                                  My NeoVIM settings
 "                                  Author: Oleg Lelenkov
 " ================================================================================
+" Auto-Save
 
-" Dlang
-Plug 'JesseKPhillips/d.vim'
+Plug 'vim-scripts/vim-auto-save'
 
-" Off autosave for OpenSCAD
-autocmd BufReadPre,FileReadPre *.scad :let g:auto_save = 0
-
-au BufRead,BufNewFile *.pre set filetype=prelum
+let g:auto_save = 1
+let g:auto_save_in_insert_mode = 0
 

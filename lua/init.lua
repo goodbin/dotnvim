@@ -63,6 +63,11 @@ plug.register(
     {'lyokha/vim-xkbswitch'},
     'settings/keymapping.vim')
 
+-- Fzf
+plug.register(
+    {'junegunn/fzf', ['do'] = 'fzf#install'},
+    {'junegunn/fzf.vim'})
+
 -- Общие настройки
 plug.register('settings/common.vim')
 

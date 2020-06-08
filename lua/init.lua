@@ -65,7 +65,7 @@ plug.register(
 
 -- Fzf
 plug.register(
-    {'junegunn/fzf', ['do'] = 'fzf#install'},
+    {'junegunn/fzf', ['do'] = ':call fzf#install()'},
     {'junegunn/fzf.vim'})
 
 -- Общие настройки

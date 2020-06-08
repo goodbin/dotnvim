@@ -3,32 +3,6 @@
 "                                  Author: Oleg Lelenkov
 " ================================================================================
 
-" Plug 'prabirshrestha/async.vim'
-" Plug 'prabirshrestha/vim-lsp'
-" Plug 'mattn/vim-lsp-settings'
-
-" let g:lsp_settings = {
-" \   'serve-d': {
-" \     'cmd': ['/home/oleg/Develop/Vendor/serve-d/serve-d']
-" \   },
-" \}
-
-" au User lsp_setup call lsp#register_server({
-"         \ 'name': 'serve-d',
-"         \ 'cmd': ['/home/oleg/Develop/Vendor/serve-d/serve-d', '-r', 'd'],
-"         \ 'whitelist': ['d'],
-"         \ 'initialization_options': {
-"         \
-"         \ }})
-
-" let g:lsp_diagnostics_enabled = 1
-" let g:lsp_log_verbose = 1
-" let g:lsp_log_file = expand('/tmp/vim-lsp.log')
-
-" for asyncomplete.vim log
-" let g:asyncomplete_log_file = expand('/tmp/asyncomplete.log')
-
-
 " let g:LanguageClient_serverCommands = {
 "     \ 'd': ['/home/oleg/Development/Vendor/dls/dls']
 "     \ }

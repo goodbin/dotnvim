@@ -3,7 +3,8 @@
 "                                  Author: Oleg Lelenkov
 " ================================================================================
 
-Plug 'lyokha/vim-xkbswitch'
+let g:XkbSwitchEnabled = 1
+let g:XkbSwitchIMappings = ['ru']
 
 set keymap=russian-jcukenwin
 set iminsert=0
@@ -20,11 +21,8 @@ let g:mapleader=','
 " Отключаем переход в Ex mode
 map Q <Nop>
 
-map <silent> <C-h> :call WinMove('h')<CR>
-map <silent> <C-j> :call WinMove('j')<CR>
-map <silent> <C-k> :call WinMove('k')<CR>
-map <silent> <C-l> :call WinMove('l')<CR>
-
-let g:XkbSwitchEnabled = 1
-let g:XkbSwitchIMappings = ['ru']
+map <silent> <C-h> :lua functions.WinMove('h')<CR>
+map <silent> <C-j> :lua functions.WinMove('j')<CR>
+map <silent> <C-k> :lua functions.WinMove('k')<CR>
+map <silent> <C-l> :lua functions.WinMove('l')<CR>
 

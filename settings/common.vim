@@ -3,9 +3,10 @@
 "                                  Author: Oleg Lelenkov
 " ================================================================================
 
-syntax on	" Подсветка языков
+syntax on   " Подсветка языков
 
-set number	" Включаем номера строк
+set noerrorbells
+set number  " Включаем номера строк
 set ttimeout
 set ttimeoutlen=100
 
@@ -19,11 +20,12 @@ set cindent
 " set autoindent
 " set backspace=indent,eol,start
 " Включаем 'умные' отступы, например, авто отступ после `{`
-" set smartindent
+set smartindent
 
 " Searching and highlines
 set hlsearch	" Подсвечивание результатов поиска
 set incsearch	" Поиск в процессе набора
+set smartcase
 
 " Keep more content at the bottom of the buffer
 set scrolloff=3

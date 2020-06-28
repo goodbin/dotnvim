@@ -56,7 +56,9 @@ plug.register(
     'settings/lsp.lua')
 
 -- Настройка языков
-plug.register('settings/languages.vim')
+plug.register(
+    {'cespare/vim-toml'},
+    'settings/languages.vim')
 
 -- Привязка клавиш
 plug.register(

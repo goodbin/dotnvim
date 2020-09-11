@@ -7,7 +7,7 @@ functions = require('utils/functions')
 --- Цветовая схема
 plug.register(
     {'morhetz/gruvbox'},
-    {'ryanoasis/vim-devicons'},
+    -- {'ryanoasis/vim-devicons'},
     'settings/theme.vim')
 
 -- Статусная строка
@@ -58,6 +58,8 @@ plug.register(
 -- Настройка языков
 plug.register(
     {'cespare/vim-toml'},
+    {'dart-lang/dart-vim-plugin'},
+    {'thosakwe/vim-flutter'},
     'settings/languages.vim')
 
 -- Привязка клавиш

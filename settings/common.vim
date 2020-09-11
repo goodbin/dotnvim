@@ -23,8 +23,8 @@ set cindent
 set smartindent
 
 " Searching and highlines
-set hlsearch	" Подсвечивание результатов поиска
-set incsearch	" Поиск в процессе набора
+set hlsearch    " Подсвечивание результатов поиска
+set incsearch   " Поиск в процессе набора
 set smartcase
 
 " Keep more content at the bottom of the buffer

@@ -1,0 +1,22 @@
+{
+  "writeln": {
+    "prefix": ["iwl"],
+    "body": [
+        "import std.stdio: wl = writeln;",
+        "wl(${1});"
+    ],
+    "description": "import writeln"
+  },
+
+  "unittest": {
+      "prefix": ["test"],
+      "body": [
+        "@(${1})",
+        "@safe unittest",
+        "{",
+        "\t${0}",
+        "}"
+      ],
+      "description": "create silly unittest"
+  }
+}

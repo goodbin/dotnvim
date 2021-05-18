@@ -1,14 +1,12 @@
 /**
- * %HERE%
- *
- * Copyright: %COPY%
+ * Copyright: %COPYRIGHT%
  * License: %LICENSE%
  * Author: <%MAIL%> %USER%
- * Date: %DATE%
  */
 
 module %MODULE%;
 
-private
+public
 {
+    %HERE%
 }

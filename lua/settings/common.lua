@@ -11,6 +11,9 @@ function setup()
     -- Allow NeoVim to set terminal title
     vim.o.title = true;
 
+    -- show signcolumn
+    vim.wo.signcolumn = "yes"
+
     -- Show both line numbers
     vim.wo.number = true;
 

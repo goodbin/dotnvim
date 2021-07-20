@@ -53,12 +53,12 @@ function setup()
         buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts);
         buf_set_keymap("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts);
 
-        vim.api.nvim_exec([[
-            augroup lsp_document_diagnostics
-            autocmd! * <buffer>
-            autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()
-            augroup END
-        ]], false);
+        -- vim.api.nvim_exec([[
+        --     augroup lsp_document_diagnostics
+        --     autocmd! * <buffer>
+        --     autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()
+        --     augroup END
+        -- ]], false);
     end
 
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(

@@ -2,8 +2,18 @@
   "println": {
     "prefix": ["pln"],
     "body": [
-        "println!(\"$1\", $2);$0"
+        "println!(\"{:?$1}\", $2);$0"
     ],
     "description": "Print line macro."
+  },
+  "test": {
+      "prefix": ["test"],
+      "body": [
+          "#[test]",
+          "fn $1_test() {",
+          "\t$2",
+          "}"
+      ],
+      "description": "Test function."
   }
 }

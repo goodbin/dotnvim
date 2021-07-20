@@ -14,8 +14,6 @@ function setup()
       end
     end
 
-    vim.o.t_Co = "256";
-
     vim.g.background = "dark";
     vim.g.gruvbox_italic = 1;
     vim.g.gruvbox_contrast_dark = "hard";

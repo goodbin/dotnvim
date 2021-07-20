@@ -20,6 +20,7 @@ function M.lsp_setup(caps, on_attach)
             assist = {
                 importMergeBehavior = "last",
                 importPrefix = "by_self",
+                allFeatures = true,
             },
             cargo = {
                 loadOutDirsFromCheck = true,

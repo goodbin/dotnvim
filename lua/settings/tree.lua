@@ -1,9 +1,7 @@
 -- settings/tree.lua
 
 function plug(manager)
-    manager.add("preservim/nerdtree")
-    manager.add("tiagofumo/vim-nerdtree-syntax-highlight")
-    manager.add("Xuyuanp/nerdtree-git-plugin")
+    manager.add("kyazdani42/nvim-tree.lua");
 end
 
 function setup()
@@ -14,21 +12,16 @@ function setup()
     vim.g.netrw_altv = 1
     vim.g.netrw_winsize = 20
 
-    vim.api.nvim_set_keymap("n", "<C-n>", ":NERDTreeToggle<CR>", { noremap = true })
+    -- nvim-tree
+    vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true })
 
-    vim.g.NERDTreeMouseMode = 0
-    vim.g.NERDTreeAutoDeleteBuffer = 1
-    vim.g.NERDTreeShowLineNumbers = 0
-    vim.g.NERDTreeStatusline = 0
-    vim.g.NERDTreeMinimalUI = 1
-    vim.g.NERDTreeDirArrowCollapsible = ""
-    vim.g.NERDTreeDirArrowExpandable = ""
-
-    -- Автоматически отобразить NertTree если не указан файл
-    vim.cmd [[ augroup NERDTreeAutoOpen" ]]
-    vim.cmd [[ autocmd! ]]
-    vim.cmd [[ autocmd StdinReadPre * let s:std_in=1 ]]
-    vim.cmd [[ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif ]]
-    vim.cmd [[ augroup END ]]
+    vim.g.nvim_tree_width = 30;
+    vim.g.nvim_tree_auto_open = 1;
+    -- vim.g.nvim_tree_follow = 1;
+    vim.g.nvim_tree_indent_markers = 1;
+    vim.g.nvim_tree_git_hl = 1;
+    -- vim.g.nvim_tree_highlight_opened_files = 1;
+    vim.g.nvim_tree_add_trailing = 1;
+    vim.g.nvim_tree_lsp_diagnostics = 1;
 end
 

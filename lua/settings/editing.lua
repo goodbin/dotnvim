@@ -3,6 +3,7 @@
 function plug(manager)
     -- manager.add("svermeulen/vim-cutlass"); -- for off cut to clipboard
     manager.add("scrooloose/nerdcommenter");
+    manager.add("lambdalisue/suda.vim");
 end
 
 function setup()

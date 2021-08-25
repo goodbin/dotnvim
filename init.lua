@@ -17,7 +17,7 @@ plug.register("settings/tree")
 --- Система контроля версий
 plug.register("settings/vcs")
 
--- Снимметы и шаблоны
+-- Сниппеты и шаблоны
 plug.register("settings/snippets")
 
 --- Completion

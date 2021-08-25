@@ -85,15 +85,17 @@ function setup()
 
     -- Настройка отображения специальных символов
     vim.o.listchars = [[tab:>\ ,nbsp:_,trail:~,extends:>,precedes:<,nbsp:+]];
+
+    vim.o.foldenable = true;      -- включить фолдинг по умолчанию
+    vim.o.foldmethod = "syntax";  -- определять блоки на основе синтаксиса файла
+    vim.o.foldlevel = 100;        -- развернуть все по умолчанию
 end
 
 -- set display+=lastline
-
 -- set cindent
 -- " set autoindent
 -- " Включаем 'умные' отступы, например, авто отступ после `{`
 -- set smartindent
-
 -- " Показывать положение курсора всё время.
 -- set ruler
 -- " Показывать незавершённые команды в статусбаре
@@ -102,11 +104,5 @@ end
 -- set guioptions=
 -- " Отключаем панель табов (окошки FTW)
 -- set showtabline=0
-
--- "=============НАСТРОЙКИ СВОРАЧИВАНИЯ БЛОКОВ КОДА (фолдинг)=============
--- set foldenable  " включить фолдинг по умолчанию
--- set foldmethod=syntax  " определять блоки на основе синтаксиса файла
--- set foldlevel=100  " Развернуть все по умолчанию
-
 -- set sessionoptions-=options
 

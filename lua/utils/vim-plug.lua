@@ -1,6 +1,5 @@
 -- vim-plug binding
 
--- local path = require("utils/path")
 -- local package = require("package")
 
 local M = {}

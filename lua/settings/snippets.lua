@@ -62,6 +62,10 @@ function user_variable(name, func_name)
 end
 
 function setup()
+    --- VSnip config
+    vim.g.vsnip_snippet_dir = vim.fn.stdpath('config') .. "/vsnip";
+
+    --- Templates
     vim.g.templates_no_autocmd = 0;
     vim.g.templates_directory = { vim.fn.stdpath('config') .. "/templates" };
     vim.g.templates_global_name_prefix = "@";
@@ -70,45 +74,5 @@ function setup()
         user_variable("COPYRIGHT", "GetCopyright"),
         user_variable("MODULE", "GetModule"),
     }
-
-    vim.g.vsnip_snippet_dir = vim.fn.stdpath('config') .. "/vsnip";
-
-    local termcodes = function(str)
-      return vim.api.nvim_replace_termcodes(str, true, true, true)
-    end
-
-    local check_back_space = function()
-        local col = vim.fn.col('.') - 1
-        if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
-            return true
-        else
-            return false
-        end
-    end
-
-    _G.tab_complete = function()
-      if vim.fn.pumvisible() == 1 then
-        return termcodes "<C-n>"
-      elseif vim.fn.call("vsnip#available", {1}) == 1 then
-        return termcodes "<Plug>(vsnip-expand-or-jump)"
-      elseif check_back_space() then
-        return termcodes "<Tab>"
-      else
-        return vim.fn['compe#complete']()
-      end
-    end
-
-    _G.s_tab_complete = function()
-      if vim.fn.pumvisible() == 1 then
-        return termcodes "<C-p>"
-      elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-        return termcodes "<Plug>(vsnip-jump-prev)"
-      else
-        return termcodes "<S-Tab>"
-      end
-    end
-
-    vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-    vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 end
 

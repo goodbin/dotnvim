@@ -20,14 +20,14 @@ plug.register("settings/vcs")
 -- Сниппеты и шаблоны
 plug.register("settings/snippets")
 
+--- Languages
+plug.register("settings/languages")
+
 --- Completion
 plug.register("settings/completion")
 
 -- Editing
 plug.register("settings/editing")
-
---- Languages
-plug.register("settings/languages")
 
 --- Внешний вид
 plug.register("settings/appearance")
@@ -35,6 +35,7 @@ plug.register("settings/appearance")
 --- Common settings
 plug.register("settings/common")
 
+-- Read .nvimrc file
 local local_vimrc = vim.fn.getcwd()..'/.nvimrc'
 if vim.loop.fs_stat(local_vimrc) then
     vim.cmd('source '..local_vimrc)

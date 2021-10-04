@@ -1,13 +1,10 @@
 --- settings/languages/init.lua
 
-local rust_lang = require("settings.languages.rust");
-local flutter_lang = require("settings.languages.flutter");
-local d_lang = require("settings.languages.dlang");
-
 local languages = {
-    rust_lang,
-    flutter_lang,
-    d_lang,
+    require("settings.languages.rust"),
+    require("settings.languages.flutter"),
+    require("settings.languages.dlang"),
+    require("settings.languages.prelum"),
 };
 
 function plug(manager)
@@ -20,9 +17,6 @@ function plug(manager)
 end
 
 function setup()
-    vim.cmd([[ autocmd BufRead,BufNewFile *.pre set filetype=prelum ]]);
-    vim.cmd([[ autocmd BufReadPre,FileReadPre *.scad :let g:auto_save = 0 ]]);
-
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     capabilities.textDocument.completion.completionItem.resolveSupport = {
@@ -46,8 +40,8 @@ function setup()
         local opts = {noremap = true, silent = true};
         buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts);
         buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts);
-        buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts);
-        buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts);
+    --     buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts);
+    --     buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts);
         buf_set_keymap("n", "K",  "<cmd>lua vim.lsp.buf.hover()<CR>", opts);
         buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts);
         buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts);
@@ -66,7 +60,6 @@ function setup()
             virtual_text = {
                 spacing = 2,
                 prefix = "",
-                severity_limit = "Warning",
             },
             signs = true,
             update_in_insert = false,

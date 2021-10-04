@@ -17,7 +17,7 @@ function setup()
     -- Show both line numbers
     vim.wo.number = true;
 
-    -- Set tab width to 4
+    -- Set tab width
     vim.bo.tabstop = indent;
     vim.o.tabstop = indent;
     vim.bo.shiftwidth = indent;
@@ -28,7 +28,7 @@ function setup()
     vim.bo.expandtab = true;
     vim.o.expandtab = true;
 
-    -- Backups off
+    -- Backups and swap off
     vim.o.backup = false;
     vim.o.undofile = false;
     vim.o.swapfile = false;
@@ -39,7 +39,7 @@ function setup()
         vim.o.clipboard = "unnamedplus";
     end
 
-    -- Кодировка текста по умолчанию utf8
+    -- Unicode by default
     vim.g.termencoding = "utf8";
     vim.o.encoding = "utf-8";
 
@@ -67,8 +67,6 @@ function setup()
 
     -- Дополнительная информация в строке состояния
     vim.o.wildmenu = true;
-    -- command bar height
-    vim.o.cmdheight = 1;
     -- No beeps
     vim.o.errorbells = false;
 
@@ -89,20 +87,12 @@ function setup()
     vim.o.foldenable = true;      -- включить фолдинг по умолчанию
     vim.o.foldmethod = "syntax";  -- определять блоки на основе синтаксиса файла
     vim.o.foldlevel = 100;        -- развернуть все по умолчанию
-end
 
--- set display+=lastline
--- set cindent
--- " set autoindent
--- " Включаем 'умные' отступы, например, авто отступ после `{`
--- set smartindent
--- " Показывать положение курсора всё время.
--- set ruler
--- " Показывать незавершённые команды в статусбаре
--- set showcmd
--- " Отключаем панели прокрутки в GUI
--- set guioptions=
--- " Отключаем панель табов (окошки FTW)
--- set showtabline=0
--- set sessionoptions-=options
+    -- Включаем 'умные' отступы, например, авто отступ после `{`
+    vim.o.cindent = true;
+    vim.o.smartindent = true;
+
+    -- Показывать незавершённые команды в статусбаре
+    vim.o.showcmd = true;
+end
 

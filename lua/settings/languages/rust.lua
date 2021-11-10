@@ -21,19 +21,28 @@ function M.lsp_setup(caps, on_attach)
         flags = {
             debounce_text_changes = 150,
         },
-        -- ["rust-analyzer"] = {
-        --     assist = {
-        --         importMergeBehavior = "last",
-        --         importPrefix = "by_self",
-        --         allFeatures = true,
-        --     },
-        --     cargo = {
-        --         loadOutDirsFromCheck = true,
-        --     },
-        --     procMacro = {
-        --         enable = true,
-        --     },
-        -- },
+        settings = {
+            ["rust-analyzer"] = {
+                assist = {
+                },
+                checkOnSave = {
+                    enable = false,
+                },
+                cargo = {
+                    loadOutDirsFromCheck = true,
+                    allFeatures = true,
+                    autoreload = true,
+                },
+                completion = {
+                    autoimport = {
+                        enable = false
+                    },
+                },
+                procMacro = {
+                    enable = true,
+                },
+            },
+        },
     });
 end
 

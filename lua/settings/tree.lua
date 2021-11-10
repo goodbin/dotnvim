@@ -13,17 +13,8 @@ function setup()
     vim.g.netrw_winsize = 20
 
     -- nvim-tree
-    vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeFocus<CR>", { noremap = true })
-    local mappings = require("nvim-tree.view").View.mappings;
-    for i, b in ipairs(mappings) do
-        if b.key == "s" then
-            table.remove(mappings, i);
-        end
-    end
-
     vim.g.nvim_tree_add_trailing = 1;
     vim.g.nvim_tree_icon_padding = ' ';
-    vim.g.nvim_tree_highlight_opened_files = 1;
     vim.g.nvim_tree_indent_markers = 1;
 
     vim.g.nvim_tree_show_icons = {
@@ -32,12 +23,6 @@ function setup()
         files = 1,
         folder_arrows = 0,
     }
-    vim.g.nvim_tree_ignore = {
-        ".git",
-        "node_modules",
-        ".cache",
-    }
-
     vim.g.nvim_tree_icons = {
         default = '',
         symlink = '',
@@ -67,21 +52,41 @@ function setup()
             error = "",
         }
     }
+    vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeFocus<CR>", { noremap = true })
+
+    local tree_cb = require('nvim-tree.config').nvim_tree_callback
+    local mappings = require("nvim-tree.view").View.mappings;
+
+    for i, b in ipairs(mappings) do
+        if b.key == "s" then
+            table.remove(mappings, i);
+        end
+    end
 
     require("nvim-tree").setup({
         disable_netrw = true,
         open_on_setup = true,
         hijack_cursor = true,
-        lsp_diagnostics = false,
         update_focused_file = {
             enable = false,
             update_cwd = false,
+        },
+        diagnostics = {
+            enable = false,
+        },
+        filters = {
+            dotfiles = true,
         },
         view = {
             width = 30,
             side = "left",
             auto_resize = true,
+            mappings = {
+                custom_only = false,
+                list = {
+                    { key = "C",    cb = tree_cb("cd") },
+                },
+            }
         }
     });
 end
-

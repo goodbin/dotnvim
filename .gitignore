@@ -2,3 +2,4 @@ plugged/
 bundle/
 .init.vim-rplugin~
 .netrwhist
+spell/

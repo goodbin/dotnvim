@@ -1,6 +1,11 @@
 {
+  "allow": {
+    "prefix": "allow",
+    "body": ["#![allow(${1})]"],
+    "description": "#![allow(…)]"
+  },
   "println": {
-    "prefix": ["pln"],
+    "prefix": ["println", "pln"],
     "body": [
         "println!(\"{:?$1}\", $2);$0"
     ],

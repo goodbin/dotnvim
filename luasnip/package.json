@@ -1,0 +1,18 @@
+{
+  "name": "custom-snippets",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "rust",
+        "path": "./snippets/rust.json"
+      },
+      {
+        "language": "d",
+        "path": "./snippets/d.json"
+      }
+    ]
+  }
+}

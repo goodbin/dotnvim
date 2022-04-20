@@ -3,3 +3,4 @@ bundle/
 .init.vim-rplugin~
 .netrwhist
 spell/
+.user.json

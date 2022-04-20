@@ -5,42 +5,46 @@ local M = {}
 local configs = {}
 local plugins = {}
 
--- Automatically install packer
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim";
-if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system({
-    "git",
-    "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
+function M.bootstrap()
+  -- Automatically install packer
+  local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim";
+  if fn.empty(fn.glob(install_path)) > 0 then
+    PACKER_BOOTSTRAP = fn.system({
+      "git",
+      "clone",
+      "--depth",
+      "1",
+      "https://github.com/wbthomason/packer.nvim",
+      install_path,
+    });
+    print("Installing packer close and reopen Neovim...");
+  end
+
+  -- Use a protected call so we don't error out on first use
+  local status_ok, packer = pcall(require, "packer");
+  if not status_ok then
+    return;
+  end
+
+  local status_ok, util = pcall(require, "packer.util");
+  if not status_ok then
+    return;
+  end
+
+  -- Have packer use a popup window
+  packer.init({
+    compile_path = util.join_paths(fn.stdpath("data"), "plugin", "packer_compiled.lua"),
+    display = {
+      open_fn = function()
+        return util.float({ border = "rounded" })
+      end,
+    },
   });
-  print("Installing packer close and reopen Neovim...");
+
+  return packer;
 end
 
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer");
-if not status_ok then
-  return;
-end
-
-local status_ok, util = pcall(require, "packer.util");
-if not status_ok then
-  return;
-end
-
--- Have packer use a popup window
-packer.init({
-  compile_path = util.join_paths(fn.stdpath("data"), "plugin", "packer_compiled.lua"),
-  display = {
-    open_fn = function()
-      return util.float({ border = "rounded" })
-    end,
-  },
-});
-
-function M.startup(callback)
+function M.startup(packer, callback)
   local retval = packer.startup(function(use)
     use("wbthomason/packer.nvim");             -- Have packer manage itself
 

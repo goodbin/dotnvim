@@ -1,13 +1,5 @@
 -- plugins/options.lua
 
-function install(use)
-  use("nvim-lua/plenary.nvim");              -- Useful lua functions used ny lots of plugins
-  use("nvim-lua/popup.nvim");                -- An implementation of the Popup API from vim in Neovim
-  use("antoinemadec/FixCursorHold.nvim");    -- This is needed to fix lsp doc highlight
-  use("kyazdani42/nvim-web-devicons");
-  use("lambdalisue/suda.vim");
-end
-
 function config()
   local indent = 4;
 
@@ -20,7 +12,7 @@ function config()
     encoding = "utf-8",                      -- the encoding setting
 
     backup = false,                          -- creates a backup file
-    undofile = true,                        -- disable persistent undo
+    undofile = true,                         -- disable persistent undo
     swapfile = false,                        -- creates a swapfile
     writebackup = false,                     -- if a file is being edited by another program
 
@@ -52,12 +44,12 @@ function config()
     wrap = false,                            -- display lines as one long line
     errorbells = false,                      -- no beeps
     colorcolumn = "100",                     -- Show 100 columns width limit
-  
+
     backspace = "indent,eol,start",          -- Allow backspace everywhere
 
     list = true,
     listchars = [[tab:>\ ,nbsp:_,trail:~,extends:>,precedes:<,nbsp:+]],
-  
+
     tabpagemax = 50,
     history = 1000,
   };

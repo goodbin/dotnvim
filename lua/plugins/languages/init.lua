@@ -2,7 +2,7 @@
 
 local languages = {
   require("plugins.languages.rust"),
-  -- require("settings.languages.flutter"),
+  require("plugins.languages.flutter"),
   -- require("settings.languages.dlang"),
   -- require("settings.languages.prelum"),
 };
@@ -18,18 +18,18 @@ end
 
 local function lsp_highlight_document(client)
   -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec(
-      [[
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]],
-      false
-    )
-  end
+  -- if client.resolved_capabilities.document_highlight then
+  --   vim.api.nvim_exec(
+  --     [[
+  --     augroup lsp_document_highlight
+  --       autocmd! * <buffer>
+  --       autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+  --       autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+  --     augroup END
+  --   ]],
+  --     false
+  --   )
+  -- end
 end
 
 local function lsp_keymaps(bufnr)
@@ -83,7 +83,7 @@ function config()
     { name = "DiagnosticSignInfo", text = "" },
   };
 
-  for _, sign in ipairs(signs) do 
+  for _, sign in ipairs(signs) do
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" });
   end
 

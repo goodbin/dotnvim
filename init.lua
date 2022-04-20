@@ -1,8 +1,13 @@
 -- init.lua
 
 local plug = require("utils/plugins");
-local project = require("utils/project");
 
+local packer = plug.bootstrap();
+if not packer then
+  return;
+end
+
+plug.register("plugins/plugins");
 plug.register("plugins/options");
 plug.register("plugins/impatient");
 plug.register("plugins/keymaps");
@@ -11,19 +16,23 @@ plug.register("plugins/nvim-tree");
 plug.register("plugins/lualine");
 plug.register("plugins/gitsigns");
 plug.register("plugins/editorconfig");
-plug.register("plugins/whichkey");
-plug.register("plugins/luasnip");
-plug.register("plugins/treesitter");
-plug.register("plugins/cmp");
-plug.register("plugins/comment");
 plug.register("plugins/autopairs");
-plug.register("plugins/spellsitter");
+plug.register("plugins/treesitter");
+plug.register("plugins/comment");
+plug.register("plugins/luasnip");
+plug.register("plugins/cmp");
 plug.register("plugins/templates");
 plug.register("plugins/languages");
+-- plug.register("plugins/spellsitter");
+-- plug.register("plugins/whichkey");
 
-project.config();
+local status_ok, project = pcall(require, "utils/project");
+if status_ok then
+  project.config();
+end
 
-plug.startup(function()
+plug.startup(packer, function()
   vim.cmd("filetype plugin indent on");
   vim.cmd("syntax on");
 end);
+

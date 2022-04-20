@@ -23,11 +23,7 @@ local function load_variables(prefix, data)
   end
 end
 
-local function load_config(name)
-  local path = path:new(vim.fn.getcwd());
-  local file_name = "." .. name .. ".json";
-  path = path:joinpath(file_name);
-
+local function load_config(name, path)
   if path:exists() and path:is_file() then
     local st, res = pcall(json_decode, path:read());
     if st then
@@ -38,9 +34,21 @@ local function load_config(name)
   end
 end
 
+local function load_project_config()
+  local path = path:new(vim.fn.getcwd());
+  local file_name = ".project.json";
+  load_config("project", path:joinpath(file_name));
+end
+
+local function load_user_config()
+  local path = path:new(vim.fn.stdpath("config"));
+  local file_name = ".user.json";
+  load_config("user", path:joinpath(file_name));
+end
+
 function M.config()
-  load_config("project");
-  load_config("user");
+  load_project_config();
+  load_user_config();
 end
 
 return M;

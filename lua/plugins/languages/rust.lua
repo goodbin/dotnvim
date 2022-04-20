@@ -19,6 +19,11 @@ function M.lsp_config(caps, on_attach)
     return
   end
 
+  local cargo_config = vim.g.project_cargo or {};
+  cargo_config["loadOutDirsFromCheck"] = true;
+  cargo_config["allFeatures"] = true;
+  cargo_config["autoreload"] = true;
+
   nvim_lsp.rust_analyzer.setup({
     capabilities = caps,
     on_attach = on_attach,
@@ -35,12 +40,12 @@ function M.lsp_config(caps, on_attach)
         experimental = {
           procAttrMacros = false
         },
-        cargo = {
-          loadOutDirsFromCheck = true,
-          allFeatures = true,
-          autoreload = true,
-        },
+        cargo = cargo_config,
         completion = {
+          addCallArgumentSnippets = false,
+          postfix = {
+            enable = false,
+          },
           autoimport = {
             enable = false
           },

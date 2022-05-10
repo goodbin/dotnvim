@@ -16,13 +16,14 @@ plug.register("plugins/nvim-tree");
 plug.register("plugins/lualine");
 plug.register("plugins/gitsigns");
 plug.register("plugins/editorconfig");
-plug.register("plugins/autopairs");
+-- plug.register("plugins/autopairs");
 plug.register("plugins/treesitter");
 plug.register("plugins/comment");
 plug.register("plugins/luasnip");
 plug.register("plugins/cmp");
 plug.register("plugins/templates");
 plug.register("plugins/languages");
+
 -- plug.register("plugins/spellsitter");
 -- plug.register("plugins/whichkey");
 

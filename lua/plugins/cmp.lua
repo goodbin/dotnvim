@@ -6,8 +6,11 @@ function install(use)
   use("hrsh7th/cmp-path");
   use("hrsh7th/cmp-cmdline");
   use("hrsh7th/cmp-nvim-lsp");
+  use("hrsh7th/cmp-nvim-lsp-signature-help");
   use("saadparwaiz1/cmp_luasnip");
 end
+
+counter = 1;
 
 --   פּ ﯟ   some other good icons
 local kind_icons = {
@@ -46,8 +49,8 @@ end
 
 function config()
   -- Show tab completion window
-  vim.opt.completeopt = "menuone,noselect";
-  vim.opt.shortmess:append "c";
+  vim.opt.completeopt = "menu,menuone,noselect";
+  -- vim.opt.shortmess:append "c";
 
   local status_ok, cmp = pcall(require, "cmp");
   if not status_ok then
@@ -56,6 +59,11 @@ function config()
 
   local status_ls, luasnip = pcall(require, "luasnip");
   if not status_ls then
+    return;
+  end
+
+  local status_buf, cmp_buffer = pcall(require, "cmp_buffer");
+  if not status_buf then
     return;
   end
 
@@ -78,17 +86,22 @@ function config()
             cmp.mapping.complete()(fallback)
           end
       end, { "i", "s" }),
+      ['<C-p>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.mapping.select_prev_item({
+              behavior = cmp.SelectBehavior.Insert,
+            })(fallback)
+          else
+            cmp.mapping.complete()(fallback)
+          end
+      end, { "i", "s" }),
       ["<C-e>"] = cmp.mapping {
           i = cmp.mapping.abort(),
           c = cmp.mapping.close(),
       },
       ["<Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        elseif luasnip.expand_or_locally_jumpable() then
-          luasnip.expand_or_jump()
-        elseif has_words_before() then
-          cmp.complete()
+        if luasnip.in_snippet() and luasnip.jumpable(1) then
+          luasnip.jump(1);
         else
           fallback()
         end
@@ -124,8 +137,20 @@ function config()
     sources = {
       { name = "path" },
       { name = "nvim_lsp" },
+      { name = 'nvim_lsp_signature_help' },
       { name = "luasnip" },
-      { name = "buffer" },
+      {
+        name = "buffer",
+        option = {
+          get_bufnrs = function() -- from visible buffers
+            local bufs = {}
+            for _, win in ipairs(vim.api.nvim_list_wins()) do
+              bufs[vim.api.nvim_win_get_buf(win)] = true
+            end
+            return vim.tbl_keys(bufs)
+          end
+        }
+      },
     },
   })
 end

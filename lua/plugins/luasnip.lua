@@ -14,4 +14,23 @@ function config()
   require("luasnip.loaders.from_vscode").load({
     paths = snip_dir
   });
+
+  local types = require("luasnip.util.types")
+
+  luasnip.config.setup({
+    delete_check_events = "TextChanged",
+
+    ext_opts = {
+      [types.choiceNode] = {
+        active = {
+          virt_text = {{"●", "Comment"}}
+        }
+      },
+      [types.insertNode] = {
+        active = {
+          virt_text = {{"●", "Comment"}}
+        }
+      }
+    },
+  });
 end

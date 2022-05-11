@@ -31,7 +31,7 @@ function config()
   keymap("n", "<C-l>", ":wincmd l<CR>", opts);
 
   -- turn off search highlight
-  keymap("n", "<leader><space>", ":nohlsearch<CR>", opts)
+  keymap("n", "<Leader><space>", ":nohlsearch<CR>", opts)
 
   keymap("n", "<C-s>", ":w<CR>", opts);
   keymap("i", "<C-s>", "<esc>:w<CR>", opts);

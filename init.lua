@@ -23,6 +23,7 @@ plug.register("plugins/luasnip");
 plug.register("plugins/cmp");
 plug.register("plugins/templates");
 plug.register("plugins/languages");
+plug.register("plugins/telescope");
 
 -- plug.register("plugins/spellsitter");
 -- plug.register("plugins/whichkey");

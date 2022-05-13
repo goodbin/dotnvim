@@ -8,39 +8,8 @@ function install(use)
   use("hrsh7th/cmp-nvim-lsp");
   use("hrsh7th/cmp-nvim-lsp-signature-help");
   use("saadparwaiz1/cmp_luasnip");
+  use("onsails/lspkind.nvim");
 end
-
-counter = 1;
-
---   פּ ﯟ   some other good icons
-local kind_icons = {
-  Text = "",
-  Method = "m",
-  Function = "",
-  Constructor = "",
-  Field = "",
-  Variable = "",
-  Class = "",
-  Interface = "",
-  Module = "",
-  Property = "",
-  Unit = "",
-  Value = "",
-  Enum = "",
-  Keyword = "",
-  Snippet = "",
-  Color = "",
-  File = "",
-  Reference = "",
-  Folder = "",
-  EnumMember = "",
-  Constant = "",
-  Struct = "",
-  Event = "",
-  Operator = "",
-  TypeParameter = "",
-}
--- find more here: https://www.nerdfonts.com/cheat-sheet
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -48,7 +17,6 @@ local has_words_before = function()
 end
 
 function config()
-  -- Show tab completion window
   vim.opt.completeopt = "menu,menuone,noselect";
   -- vim.opt.shortmess:append "c";
 
@@ -62,12 +30,24 @@ function config()
     return;
   end
 
-  local status_buf, cmp_buffer = pcall(require, "cmp_buffer");
-  if not status_buf then
+  local status_kd, lspkind = pcall(require, "lspkind");
+  if not status_kd then
     return;
   end
 
   cmp.setup({
+    preselect = cmp.PreselectMode.None,
+    experimental = {
+      ghost_text = false,
+      native_menu = false,
+    },
+    confirm_opts = {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = false,
+    },
+    completion = {
+      keyword_length = 1,
+    },
     snippet = {
       expand = function(args)
         luasnip.lsp_expand(args.body);
@@ -102,37 +82,34 @@ function config()
       ["<Tab>"] = cmp.mapping(function(fallback)
         if luasnip.in_snippet() and luasnip.jumpable(1) then
           luasnip.jump(1);
+        elseif has_words_before() then
+          cmp.complete();
         else
           fallback()
         end
       end, { "i", "s" }),
     },
-    preselect = true,
     formatting = {
-      fields = { "kind", "abbr", "menu" },
-      format = function(entry, vim_item)
-        vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-        vim_item.menu = ({
-          nvim_lsp = "[LSP]",
-          luasnip = "[Snippet]",
+      format = lspkind.cmp_format({
+        mode = "symbol_text",
+        menu = {
           buffer = "[Buffer]",
+          nvim_lsp = "[LSP]",
+          luasnip = "[Snip]",
           path = "[Path]",
-        })[entry.source.name]
-        return vim_item
-      end,
-    },
-    confirm_opts = {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = false,
+          nvim_lua = "[Lua]",
+          latex_symbols = "[Latex]",
+        },
+        symbol_map = {
+          Text = "",
+          TypeParameter = "",
+        },
+      }),
     },
     window = {
       documentation = {
         border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
       },
-    },
-    experimental = {
-      ghost_text = false,
-      native_menu = false,
     },
     sources = {
       { name = "path" },

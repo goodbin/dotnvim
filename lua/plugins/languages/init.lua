@@ -3,8 +3,7 @@
 local languages = {
   require("plugins.languages.rust"),
   require("plugins.languages.flutter"),
-  -- require("settings.languages.dlang"),
-  -- require("settings.languages.prelum"),
+  require("plugins.languages.dlang"),
 };
 
 function install(use)
@@ -14,22 +13,6 @@ function install(use)
   for _, lang in ipairs(languages) do
     lang.install(use);
   end
-end
-
-local function lsp_highlight_document(client)
-  -- Set autocommands conditional on server_capabilities
-  -- if client.resolved_capabilities.document_highlight then
-  --   vim.api.nvim_exec(
-  --     [[
-  --     augroup lsp_document_highlight
-  --       autocmd! * <buffer>
-  --       autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-  --       autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-  --     augroup END
-  --   ]],
-  --     false
-  --   )
-  -- end
 end
 
 local function lsp_keymaps(bufnr)
@@ -66,6 +49,11 @@ function config()
   end
 
   local capabilities = vim.lsp.protocol.make_client_capabilities();
+  capabilities.workspace.configuration = true;
+  capabilities.workspace.workspaceEdit.documentChanges = true;
+  capabilities.textDocument.documentColor = {
+    dynamicRegistration = true,
+  };
   capabilities = cmp_nvim_lsp.update_capabilities(capabilities);
 
   local on_attach = function(client, bufnr)
@@ -73,7 +61,6 @@ function config()
       client.resolved_capabilities.document_formatting = false;
     end
     lsp_keymaps(bufnr);
-    lsp_highlight_document(client);
   end
 
   local signs = {
@@ -88,9 +75,7 @@ function config()
   end
 
   local dia_config = {
-    -- disable virtual text
     virtual_text = false,
-    -- show signs
     signs = {
       active = signs,
     },
@@ -111,22 +96,11 @@ function config()
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
-  })
+  });
 
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
     border = "rounded",
-  })
-
-  -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  -- vim.lsp.diagnostic.on_publish_diagnostics, {
-  --   virtual_text = {
-  --     spacing = 2,
-  --     prefix = "",
-  --   },
-  --   signs = true,
-  --   update_in_insert = false,
-  -- }
-  -- );
+  });
 
   for _, lang in ipairs(languages) do
     if lang.lsp_config then

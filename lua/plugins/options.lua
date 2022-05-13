@@ -21,8 +21,6 @@ function config()
     incsearch = true,                        -- incremntal search
     smartcase = true,                        -- smart case
 
-    smartindent = true,                      -- make indenting smarter again
-
     showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
     showcmd = true,                          -- show commands in status bar
     signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
@@ -48,7 +46,7 @@ function config()
     backspace = "indent,eol,start",          -- Allow backspace everywhere
 
     list = true,
-    listchars = [[tab:>\ ,nbsp:_,trail:~,extends:>,precedes:<,nbsp:+]],
+    listchars = [[tab:>\ ,nbsp:_,trail:~,extends:>,precedes:<,nbsp:+,eol:↴]],
 
     tabpagemax = 50,
     history = 1000,

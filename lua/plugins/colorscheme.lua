@@ -37,7 +37,7 @@ function config_darkplus()
 end
 
 function config()
-  vim.o.termguicolors = true;
+  vim.opt.termguicolors = true;
   -- config_material();
   config_darkplus();
 end

@@ -4,15 +4,17 @@ local M = {}
 
 function M.install(use)
   use("dart-lang/dart-vim-plugin");
-    -- manager.add("thosakwe/vim-flutter");
+  -- manager.add("thosakwe/vim-flutter");
 end
 
 function M.config()
   -- vim.cmd([[ autocmd BufRead,BufNewFile *.dart set cursorcolumn ]]);
+  -- vim.cmd([[autocmd Filetype dart setlocal ts=2 sw=2 expandtab]]);
 
   -- Dart
-  vim.g.dart_style_guide = 1;
-  vim.g.dart_format_on_save = true;
+  vim.g.dart_style_guide = 2;
+  vim.g.dart_trailing_comma_indent = true;
+  -- vim.g.dart_format_on_save = true;
 
   -- -- Flutter
   -- vim.g.flutter_hot_reload_on_save = true;
@@ -25,8 +27,10 @@ function M.lsp_config(caps, on_attach)
   if not status_ok then
     return
   end
-  -- nvim_lsp.dart.setup({
-  -- });
+
+  nvim_lsp.dartls.setup({
+    cmd = { "dart", "language-server", "--lsp" }
+  });
 end
 
 return M

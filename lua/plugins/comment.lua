@@ -1,7 +1,6 @@
 -- plugins/comment
 
 function install(use)
-  use("JoosepAlviste/nvim-ts-context-commentstring");
   use("numToStr/Comment.nvim");
 end
 
@@ -17,21 +16,24 @@ function config()
   end
 
   comment.setup({
-    -- pre_hoot = function(ctx)
-    --   local U = require("Comment.utils");
-    --   local TU = require("ts_context_commentstring.utils");
-    --
-    --   local location = nil;
-    --   if ctx.ctype == U.ctype.block then
-    --     location = TU.get_cursor_location();
-    --   elseif ctx.cmotion == U.cmotion.v or ctx.cmotion == U.cmotion.V then
-    --     location = TU.get_visual_start_location();
-    --   end
-    --
-    --   return require("ts_context_commentstring.internal").calculate_commentstring {
-    --     key = ctx.ctype == U.ctype.line and "__default" or "__multiline",
-    --     location = location,
-    --   }
-    -- end
+    padding = true,
+    sticky = true,
+    pre_hoot = function(ctx)
+      local U = require("Comment.utils");
+      local TU = require("ts_context_commentstring.utils");
+      local TI = require("ts_context_commentstring.internal");
+
+      local location = nil;
+      if ctx.ctype == U.ctype.block then
+        location = TU.get_cursor_location();
+      elseif ctx.cmotion == U.cmotion.v or ctx.cmotion == U.cmotion.V then
+        location = TU.get_visual_start_location();
+      end
+
+      return TI.calculate_commentstring {
+        key = ctx.ctype == U.ctype.line and "__default" or "__multiline",
+        location = location,
+      }
+    end
   });
 end

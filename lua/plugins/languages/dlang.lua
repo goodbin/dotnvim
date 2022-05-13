@@ -1,14 +1,14 @@
---- settings/languages/dlang.lua
+--- plugins/languages/dlang.lua
 
 local M = {}
 
-function M.plug(manager)
+function M.install(use)
 end
 
-function M.setup()
+function M.config()
 end
 
-function M.lsp_setup(caps, on_attach)
+function M.lsp_config(caps, on_attach)
     -- local nvim_lsp = require("lspconfig");
     -- local configs = require("lspconfig/configs");
     -- local util = require("lspconfig/util");

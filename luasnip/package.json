@@ -12,6 +12,10 @@
       {
         "language": "d",
         "path": "./snippets/d.json"
+      },
+      {
+        "language": "dart",
+        "path": "./snippets/dart.json"
       }
     ]
   }

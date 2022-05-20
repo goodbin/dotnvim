@@ -1,0 +1,35 @@
+{
+  "stl": {
+    "prefix": "stl",
+    "body": [
+      "class $1 extends StatelessWidget {",
+      "\tconst $1({super.key});",
+      "",
+      "\t@override",
+      "\tWidget build(BuildContext context) {",
+      "\t\t$0",
+      "\t}",
+      "}"
+    ],
+    "description": "Create StatelessWidget"
+  },
+  "stf": {
+    "prefix": "stf",
+    "body": [
+      "class $1 extends StatefulWidget {",
+      "\tconst $1({super.key});",
+      "",
+      "\t@override",
+      "\tState<StatefulWidget> createState() => _$2();",
+      "}",
+      "",
+      "class _$2 extends State<$1> {",
+      "\t@override",
+      "\tWidget build(BuildContext context) {",
+      "\t\t$0",
+      "\t}",
+      "}"
+    ],
+    "description": "Create StatefulWidget"
+  }
+}

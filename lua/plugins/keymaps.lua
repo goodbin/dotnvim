@@ -13,7 +13,7 @@ function config()
   local term_opts = { silent = true }
 
   vim.g.XkbSwitchEnabled = 1;
-  vim.g.XkbSwitchLib = "/home/oleg/Develop/Private/skb-switch/target/debug/libskb_switch.so"
+  -- vim.g.XkbSwitchLib = "/home/oleg/Develop/Private/skb-switch/target/debug/libskb_switch.so"
 
   -- Learn it the hard way
   keymap("", "<up>", "<nop>", {});

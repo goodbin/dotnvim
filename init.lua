@@ -25,9 +25,8 @@ plug.register("plugins/cmp");
 plug.register("plugins/templates");
 plug.register("plugins/languages");
 plug.register("plugins/telescope");
-
 -- plug.register("plugins/spellsitter");
--- plug.register("plugins/whichkey");
+plug.register("plugins/whichkey");
 
 local status_ok, project = pcall(require, "utils/project");
 if status_ok then

@@ -29,6 +29,11 @@ function M.lsp_config(caps, on_attach)
   end
 
   nvim_lsp.dartls.setup({
+    capabilities = caps,
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    },
     cmd = { "dart", "language-server", "--lsp" }
   });
 end

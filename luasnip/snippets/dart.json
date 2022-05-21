@@ -31,5 +31,34 @@
       "}"
     ],
     "description": "Create StatefulWidget"
+  },
+  "inher": {
+    "prefix": "inher",
+    "body": [
+      "class $1 extends InheritedWidget {",
+      "\tconst $1({",
+      "\t\tsuper.key,",
+      "\t\trequired super.child,",
+      "\t});",
+      "",
+      "\tstatic $1? watch(BuildContext context) {",
+      "\t\treturn context",
+      "\t\t\t\t.dependOnInheritedWidgetOfExactType<$1>();",
+      "\t}",
+      "",
+      "\tstatic $1? read(BuildContext context) {",
+      "\t\tfinal widget = context",
+      "\t\t\t\t.getElementForInheritedWidgetOfExactType<$1>()",
+      "\t\t\t\t?.widget;",
+      "\t\treturn widget is $1 ? widget : null;",
+      "\t}",
+      "",
+      "\t@override",
+      "\tbool updateShouldNotify($1 oldWidget) {",
+      "\t\treturn true;",
+      "\t}",
+      "}"
+    ],
+    "description": "Create InheritedWidget"
   }
 }

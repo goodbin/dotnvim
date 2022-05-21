@@ -1,7 +1,7 @@
 -- plugins/nvim-tree.lua
 
 function install(use)
-  use({"kyazdani42/nvim-tree.lua"});
+  use("kyazdani42/nvim-tree.lua");
 end
 
 function config()

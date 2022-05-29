@@ -50,6 +50,8 @@ function config()
 
     tabpagemax = 50,
     history = 1000,
+
+    foldlevel = 99,
   };
 
   for k, v in pairs(options) do

@@ -7,8 +7,10 @@ local languages = {
 };
 
 function install(use)
-  use("neovim/nvim-lspconfig");  -- enable LSP
-  use("cespare/vim-toml");       -- enable toml language
+  use("neovim/nvim-lspconfig");    -- enable LSP
+
+  use("cespare/vim-toml");         -- enable toml language
+  use("khaveesh/vim-fish-syntax");
 
   for _, lang in ipairs(languages) do
     lang.install(use);

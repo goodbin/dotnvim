@@ -14,9 +14,9 @@ function config()
     return;
   end
 
-  vim.cmd([[set foldmethod=expr]]);
-  vim.cmd([[set foldexpr=nvim_treesitter#foldexpr()]]);
-  vim.cmd([[set indentexpr=nvim_treesitter#indent()]]);
+  vim.opt["foldmethod"] = "expr";
+  vim.opt["foldexpr"] = "nvim_treesitter#foldexpr()";
+  vim.opt["indentexpr"] = "nvim_treesitter#indent()";
 
   tconfig.setup({
     ensure_installed = "all",

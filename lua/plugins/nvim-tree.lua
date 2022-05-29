@@ -15,8 +15,6 @@ function config()
     return;
   end
 
-  vim.g.nvim_tree_add_trailing = 1;
-
   local tree_cb = nvim_tree_config.nvim_tree_callback;
   nvim_tree.setup({
     disable_netrw = true,
@@ -33,6 +31,7 @@ function config()
       "alpha",
     },
     renderer = {
+      add_trailing = true,
       indent_markers = {
         enable = true,
         icons = {

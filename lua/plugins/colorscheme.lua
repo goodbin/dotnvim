@@ -1,7 +1,7 @@
 -- plugins/colorscheme
 
 function install(use)
-  use("goodbin/darkplus.nvim");
+  use("LunarVim/darkplus.nvim");
   use("sainnhe/gruvbox-material");
 end
 

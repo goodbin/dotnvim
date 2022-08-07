@@ -6,7 +6,7 @@ end
 
 function config()
   -- Shorten function name
-  local keymap = vim.api.nvim_set_keymap
+  local keymap = vim.keymap.set;
 
   -- Options
   local opts = { noremap = true, silent = true }
@@ -29,6 +29,13 @@ function config()
   keymap("n", "<C-j>", ":wincmd j<CR>", opts);
   keymap("n", "<C-k>", ":wincmd k<CR>", opts);
   keymap("n", "<C-l>", ":wincmd l<CR>", opts);
+
+  -- Navigate buffers
+  keymap("n", "<S-l>", ":bnext<CR>", opts)
+  keymap("n", "<S-h>", ":bprevious<CR>", opts)
+
+  -- Close buffers
+  keymap("n", "<S-q>", "<cmd>bdelete!<CR>", opts)
 
   -- turn off search highlight
   keymap("n", "<Leader><space>", ":nohlsearch<CR>", opts)

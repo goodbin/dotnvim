@@ -14,7 +14,12 @@ function config()
     show_current_context = true,
     show_trailing_blankline_indent = false,
     use_treesitter = true,
-    -- show_end_of_line = true,
+    buftype_exclude = { "terminal", "nofile" },
+    filetype_exclude = {
+      "help",
+      "packer",
+      "NvimTree",
+    },
     context_highlight_list = {
       "IndentBlanklineIndent1",
       "IndentBlanklineIndent2",

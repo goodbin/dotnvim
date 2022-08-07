@@ -16,7 +16,9 @@ function config()
   end
 
   local tree_cb = nvim_tree_config.nvim_tree_callback;
+
   nvim_tree.setup({
+    create_in_closed_folder = true,
     disable_netrw = true,
     open_on_setup = true,
     hijack_cursor = true,
@@ -31,25 +33,34 @@ function config()
       "alpha",
     },
     renderer = {
-      add_trailing = true,
+      group_empty = true,
+      add_trailing = false,
       indent_markers = {
-        enable = true,
+        enable = false,
         icons = {
           corner = "└ ",
           edge = "│ ",
           none = "  ",
         },
       },
+      icons = {
+        webdev_colors = true,
+        git_placement = "after",
+      },
     },
     filters = {
       dotfiles = true,
     },
     git = {
-      enable = false,
+      enable = true,
       ignore = false,
-      timeout = 500,
+      timeout = 1000,
+    },
+    diagnostics = {
+      enable = false,
     },
     view = {
+      adaptive_size = true,
       mappings = {
         custom_only = false,
         list = {

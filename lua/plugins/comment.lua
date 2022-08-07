@@ -18,6 +18,10 @@ function config()
   comment.setup({
     padding = true,
     sticky = true,
+    mappings = {
+      basic = true,
+      extended = false,
+    },
     pre_hoot = function(ctx)
       local U = require("Comment.utils");
       local TU = require("ts_context_commentstring.utils");

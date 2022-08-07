@@ -6,19 +6,27 @@ function install(use)
   use("hrsh7th/cmp-path");
   use("hrsh7th/cmp-cmdline");
   use("hrsh7th/cmp-nvim-lsp");
-  use("hrsh7th/cmp-nvim-lsp-signature-help");
   use("saadparwaiz1/cmp_luasnip");
+
+  -- use("hrsh7th/cmp-nvim-lsp-signature-help");
   use("onsails/lspkind.nvim");
 end
 
-local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+local check_backspace = function()
+	local col = vim.fn.col(".") - 1
+	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
+-- local has_words_before = function()
+--   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+--   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+-- end
+
 function config()
-  vim.opt.completeopt = "menu,menuone,noselect";
-  -- vim.opt.shortmess:append "c";
+  vim.opt.completeopt = { "menuone" , "noselect" };
+  vim.opt.shortmess:append "c"
+  vim.opt.whichwrap:append("<,>,[,],h,l")
+  vim.opt.iskeyword:append("-")
 
   local status_ok, cmp = pcall(require, "cmp");
   if not status_ok then
@@ -36,6 +44,11 @@ function config()
   end
 
   cmp.setup({
+    snippet = {
+      expand = function(args)
+        luasnip.lsp_expand(args.body);
+      end,
+    },
     preselect = cmp.PreselectMode.None,
     experimental = {
       ghost_text = false,
@@ -48,42 +61,35 @@ function config()
     completion = {
       keyword_length = 1,
     },
-    snippet = {
-      expand = function(args)
-        luasnip.lsp_expand(args.body);
-      end,
-    },
     mapping = {
       ["<CR>"] = cmp.mapping.confirm({ select = true }),
       ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-2), { "i", "c" }),
       ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(2), { "i", "c" }),
-      ['<C-n>'] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.mapping.select_next_item({
-              behavior = cmp.SelectBehavior.Insert,
-            })(fallback)
-          else
-            cmp.mapping.complete()(fallback)
-          end
-      end, { "i", "s" }),
-      ['<C-p>'] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.mapping.select_prev_item({
-              behavior = cmp.SelectBehavior.Insert,
-            })(fallback)
-          else
-            cmp.mapping.complete()(fallback)
-          end
-      end, { "i", "s" }),
-      ["<C-e>"] = cmp.mapping {
+      ["<C-e>"] = cmp.mapping({
           i = cmp.mapping.abort(),
           c = cmp.mapping.close(),
-      },
+      }),
+      ['<C-n>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.mapping.select_next_item({
+                behavior = cmp.SelectBehavior.Insert,
+              })(fallback)
+            else
+              cmp.mapping.complete()(fallback)
+            end
+        end, { "i", "s" }),
+      ['<C-p>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.mapping.select_prev_item({
+                behavior = cmp.SelectBehavior.Insert,
+              })(fallback)
+            else
+              cmp.mapping.complete()(fallback)
+            end
+        end, { "i", "s" }),
       ["<Tab>"] = cmp.mapping(function(fallback)
         if luasnip.in_snippet() and luasnip.jumpable(1) then
           luasnip.jump(1);
-        elseif has_words_before() then
-          cmp.complete();
         else
           fallback()
         end

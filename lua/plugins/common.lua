@@ -1,4 +1,12 @@
--- plugins/options.lua
+-- plugins/common.lua
+
+function install(use)
+  use("nvim-lua/plenary.nvim");              -- Useful lua functions used ny lots of plugins
+  -- use("nvim-lua/popup.nvim");                -- An implementation of the Popup API from vim in Neovim
+  -- use("antoinemadec/FixCursorHold.nvim");    -- This is needed to fix lsp doc highlight
+  use("kyazdani42/nvim-web-devicons");
+  use("lambdalisue/suda.vim");
+end
 
 function config()
   local indent = 4;
@@ -6,6 +14,9 @@ function config()
   local options = {
     number = true,                           -- show line numbers
     relativenumber = false,                  -- set relative numbered lines
+    numberwidth = 4,                         -- set number column width to 2 {default 4}
+    cmdheight = 1,                           -- more space in the neovim command line for displaying messages
+    pumheight = 10,                          -- pop up menu height
 
     conceallevel = 0,                        -- so that `` is visible in markdown files
     fileencoding = "utf-8",                  -- the encoding written to a file
@@ -20,12 +31,15 @@ function config()
     ignorecase = true,                       -- ignore case in search patterns
     incsearch = true,                        -- incremntal search
     smartcase = true,                        -- smart case
+    smartindent = true,                      -- make indenting smarter again
 
     showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
-    showcmd = true,                          -- show commands in status bar
+    showtabline = 0,                         -- always show tabs
+    showcmd = false,                         -- show commands in status bar
+    ruler = false,                           -- show ruler
     signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
     splitbelow = true,                       -- force all horizontal splits to go below current window
-    splitright = false,                      -- force all vertical splits to go to the right of current window
+    splitright = true,                       -- force all vertical splits to go to the right of current window
 
     scrolloff = 3,                           -- keep more content at the bottom of the buffer
     sidescrolloff = 5,
@@ -50,13 +64,18 @@ function config()
 
     tabpagemax = 50,
     history = 1000,
+    laststatus = 3,
 
     foldlevel = 99,
+
+    timeoutlen = 1000,                       -- time to wait for a mapped sequence to complete (in milliseconds)
   };
 
   for k, v in pairs(options) do
     vim.opt[k] = v;
   end
+
+  vim.opt.fillchars.eob = " ";
 
   vim.g.loaded_python_provider = 0;
   vim.g.loaded_python3_provider = 0;
@@ -83,6 +102,6 @@ function config()
 
   -- Enable system clipboard integration
   if vim.fn.has("clipboard") ~= 0 then
-    vim.o.clipboard = "unnamedplus";
+    vim.opt.clipboard = "unnamedplus";
   end
 end

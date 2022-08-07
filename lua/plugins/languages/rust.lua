@@ -38,7 +38,7 @@ function M.lsp_config(caps, on_attach)
           -- enable = false,
         },
         experimental = {
-          procAttrMacros = false
+          procAttrMacros = true
         },
         cargo = cargo_config,
         completion = {

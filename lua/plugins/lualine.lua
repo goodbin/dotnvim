@@ -10,12 +10,12 @@ function config()
     return
   end
 
-  local branch = { "branch",
-    icons_enabled = true,
-    icon = "",
-  }
+  local hide_in_width = function()
+    return vim.fn.winwidth(0) > 80
+  end
 
-  local diagnostics = { "diagnostics",
+  local diagnostics = {
+    "diagnostics",
     sources = { "nvim_diagnostic" },
     sections = { "error", "warn" },
     symbols = { error = " ", warn = " " },
@@ -24,34 +24,44 @@ function config()
     always_visible = true,
   }
 
-  local mode = { "mode",
-    fmt = function(str)
-      return "-- " .. str .. " --"
-    end,
+  local filetype = {
+    "filetype",
+    icons_enabled = false,
+    icon = nil,
   }
 
-  local location = { "location",
+  local location = {
+    "location",
     padding = 0,
   }
 
-  local hide_in_width = function()
-    return vim.fn.winwidth(0) > 80
-  end
-
-  local diff = { "diff",
+  local diff = {
+    "diff",
     colored = false,
-    symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
+    symbols = {
+      added = " ",
+      modified = " ",
+      removed = " "
+    },
     cond = hide_in_width,
-  }
-
-  local filetype = { "filetype",
-    icons_enabled = false,
-    icon = nil,
   }
 
   local spaces = function()
     return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
   end
+
+  local mode = {
+    "mode",
+    fmt = function(str)
+      return "-- " .. str .. " --"
+    end,
+  }
+
+  local branch = {
+    "branch",
+    icons_enabled = true,
+    icon = "",
+  }
 
   local lsp_server = {
     function()
@@ -74,6 +84,7 @@ function config()
 
   lualine.setup({
     options = {
+      globalstatus = true,
       icons_enabled = true,
       theme = "codedark",
       component_separators = { left = "|", right = "|" },
@@ -101,3 +112,4 @@ function config()
     extensions = {},
   })
 end
+

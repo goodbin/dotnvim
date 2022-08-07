@@ -3,9 +3,11 @@
 local M = {}
 
 function M.install(use)
+
 end
 
 function M.config()
+
 end
 
 function M.lsp_config(caps, on_attach)

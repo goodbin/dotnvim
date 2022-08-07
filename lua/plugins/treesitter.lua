@@ -16,7 +16,6 @@ function config()
 
   vim.opt["foldmethod"] = "expr";
   vim.opt["foldexpr"] = "nvim_treesitter#foldexpr()";
-  vim.opt["indentexpr"] = "nvim_treesitter#indent()";
 
   tconfig.setup({
     ensure_installed = "all",
@@ -26,7 +25,7 @@ function config()
     },
     indent = {
       enable = true,
-      disable = { "dart" },
+      disable = { "dart", "d" },
     },
     autopairs = {
       enable = true,

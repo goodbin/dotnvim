@@ -1,4 +1,4 @@
--- plugins/lualine.lua
+-- settings/lualine
 
 function install(use)
   use("nvim-lualine/lualine.nvim");
@@ -112,4 +112,3 @@ function config()
     extensions = {},
   })
 end
-

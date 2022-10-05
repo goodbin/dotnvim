@@ -46,7 +46,7 @@ local function load_user_config()
   load_config("user", path:joinpath(file_name));
 end
 
-function M.config()
+function M.bootstrap()
   load_project_config();
   load_user_config();
 end

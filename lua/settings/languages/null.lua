@@ -1,12 +1,12 @@
---- plugins/languages/null.lua
+--- settings/languages/null.lua
 
-local M = {}
+enabled = false;
 
-function M.install(use)
+function install(use)
   use("jose-elias-alvarez/null-ls.nvim");  -- for formatters and linters
 end
 
-function M.config()
+function config()
   local null_ls_status_ok, null_ls = pcall(require, "null-ls")
   if not null_ls_status_ok then
     return
@@ -30,8 +30,6 @@ function M.config()
   }
 end
 
-function M.lsp_config(caps, on_attach)
+function lsp_config(nvim_lsp, caps, on_attach)
 end
-
-return M
 

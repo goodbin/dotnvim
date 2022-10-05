@@ -1,16 +1,16 @@
---- plugins/languages/dlang.lua
+--- settings/languages/dlang/init.lua
 
-local M = {}
+enabled = false;
 
-function M.install(use)
+function install(use)
+  print("install Dlang")
+end
+
+function config()
 
 end
 
-function M.config()
-
-end
-
-function M.lsp_config(caps, on_attach)
+function lsp_config(nvim_lsp, caps, on_attach)
     -- local nvim_lsp = require("lspconfig");
     -- local configs = require("lspconfig/configs");
     -- local util = require("lspconfig/util");
@@ -32,6 +32,3 @@ function M.lsp_config(caps, on_attach)
     -- Bug serve-d
     -- nvim_lsp.serve_lsp.setup({});
 end
-
-return M
-

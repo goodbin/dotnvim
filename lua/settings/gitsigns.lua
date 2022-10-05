@@ -1,4 +1,4 @@
---- plugins/gitsigns.lua
+-- settings/gitsigns
 
 function install(use)
   use("lewis6991/gitsigns.nvim");

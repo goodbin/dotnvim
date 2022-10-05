@@ -1,38 +1,35 @@
 -- init.lua
 
-local plug = require("utils/plugins");
-
-local packer = plug.bootstrap();
-if not packer then
+local plug = require("core/plugins");
+if not plug.bootstrap() then
+  error("Failed load plugin system");
   return;
 end
 
-plug.register("plugins/common");
-plug.register("plugins/impatient");
-plug.register("plugins/keymaps");
-plug.register("plugins/colorscheme");
-plug.register("plugins/nvim-tree");
-plug.register("plugins/lualine");
-plug.register("plugins/gitsigns");
-plug.register("plugins/editorconfig");
-plug.register("plugins/treesitter");
-plug.register("plugins/indent");
-plug.register("plugins/comment");
-plug.register("plugins/autopairs");
-plug.register("plugins/luasnip");
-plug.register("plugins/illuminate");
-plug.register("plugins/cmp");
-plug.register("plugins/templates");
-plug.register("plugins/languages");
-plug.register("plugins/telescope");
+plug.load("settings/common");
+plug.load("settings/impatient");
+plug.load("settings/keymaps");
+plug.load("settings/colorscheme", "darkplus");
+plug.load("settings/nvim-tree");
+plug.load("settings/lualine");
+plug.load("settings/gitsigns");
+plug.load("settings/editorconfig");
+plug.load("settings/treesitter");
+plug.load("settings/indent");
+plug.load("settings/comment");
+plug.load("settings/luasnip");
+plug.load("settings/cmp");
+plug.load("settings/autopairs");
+plug.load("settings/templates");
+plug.load("settings/telescope");
+plug.load("settings/languages");
 
-local status_ok, project = pcall(require, "utils/project");
+local status_ok, project = pcall(require, "core/project");
 if status_ok then
-  project.config();
+  project.bootstrap();
 end
 
-plug.startup(packer, function()
+plug.startup(function()
   vim.cmd("filetype plugin indent on");
   vim.cmd("syntax on");
 end);
-

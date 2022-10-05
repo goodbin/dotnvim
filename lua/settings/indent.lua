@@ -1,4 +1,4 @@
--- plugins/indent.lua
+-- settings/indent
 
 function install(use)
   use("lukas-reineke/indent-blankline.nvim");

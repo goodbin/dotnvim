@@ -1,4 +1,4 @@
--- plugins/comment
+-- settings/comment
 
 function install(use)
   use("numToStr/Comment.nvim");
@@ -9,6 +9,13 @@ function config()
   if not status_ok then
     return;
   end
+
+  local status_ok, ft = pcall(require, "Comment.ft");
+  if not status_ok then
+    return;
+  end
+
+  ft.set('dart', {'//%s', '/*%s*/'});
 
   local status_ok, _ = pcall(require, "ts_context_commentstring");
   if not status_ok then

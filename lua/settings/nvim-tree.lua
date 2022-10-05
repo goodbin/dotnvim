@@ -1,4 +1,4 @@
--- plugins/nvim-tree.lua
+-- settings/nvim-tree.lua
 
 function install(use)
   use("kyazdani42/nvim-tree.lua");
@@ -71,5 +71,5 @@ function config()
     }
   });
 
-  vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeFocus<CR>", { noremap = true });
+  vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true });
 end

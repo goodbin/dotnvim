@@ -1,4 +1,4 @@
--- plugins/impatient
+-- settings/impatient
 
 function install(use)
   use("lewis6991/impatient.nvim");
@@ -9,6 +9,4 @@ function config()
   if not status_ok then
     return
   end
-
-  impatient.enable_profile()
 end

@@ -1,4 +1,4 @@
--- plugins/luasnip.lua
+-- settings/luasnip
 
 function install(use)
   use("L3MON4D3/LuaSnip");

@@ -1,4 +1,4 @@
--- plugins/editorconfig.lua
+-- settings/editorconfig
 
 function install(use)
   use("editorconfig/editorconfig-vim");

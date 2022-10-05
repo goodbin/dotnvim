@@ -1,13 +1,13 @@
 --- settings/languages/flutter.lua
 
-local M = {}
+enabled = false;
 
-function M.install(use)
+function install(use)
   use("dart-lang/dart-vim-plugin");
   -- manager.add("thosakwe/vim-flutter");
 end
 
-function M.config()
+function config()
   -- vim.cmd([[ autocmd BufRead,BufNewFile *.dart set cursorcolumn ]]);
   -- vim.cmd([[autocmd Filetype dart setlocal ts=2 sw=2 expandtab]]);
 
@@ -22,12 +22,7 @@ function M.config()
   -- vim.g.flutter_autoscroll = true;
 end
 
-function M.lsp_config(caps, on_attach)
-  local status_ok, nvim_lsp = pcall(require, "lspconfig");
-  if not status_ok then
-    return
-  end
-
+function lsp_config(nvim_lsp, caps, on_attach)
   nvim_lsp.dartls.setup({
     capabilities = caps,
     on_attach = on_attach,
@@ -37,6 +32,4 @@ function M.lsp_config(caps, on_attach)
     cmd = { "dart", "language-server", "--lsp" }
   });
 end
-
-return M
 

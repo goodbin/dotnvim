@@ -1,5 +1,3 @@
---- utils/dub.lua
-
 local M = {}
 
 function M.is_dub_project(dub_path)

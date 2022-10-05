@@ -1,4 +1,4 @@
---- plugins/templates.lua
+-- settings/templates
 
 function install(use)
   use("tibabit/vim-templates");

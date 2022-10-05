@@ -1,8 +1,15 @@
--- plugins/colorscheme
+-- settings/colorscheme
 
-function install(use)
-  use("LunarVim/darkplus.nvim");
-  use("sainnhe/gruvbox-material");
+function install(use, ...)
+  local args = {...};
+
+  if vim.tbl_contains(args, "darkplus") then
+    use("LunarVim/darkplus.nvim");
+  end
+
+  if vim.tbl_contains(args, "material") then
+    use("sainnhe/gruvbox-material");
+  end
 end
 
 function config_material()
@@ -22,9 +29,17 @@ function config_darkplus()
   vim.cmd("colorscheme darkplus");
 end
 
-function config()
+function config(...)
+  local args = {...};
+
   vim.opt.termguicolors = true;
-  vim.opt.guifont = "monospace:h17";
-  -- config_material();
-  config_darkplus();
+  vim.opt.guifont = "monospace:h10";
+
+  if vim.tbl_contains(args, "darkplus") then
+    config_darkplus();
+  end
+
+  if vim.tbl_contains(args, "material") then
+    config_material();
+  end
 end

@@ -1,11 +1,10 @@
--- plugins/keymapping.lua
+-- settings/kaymap
 
 function install(use)
   use("lyokha/vim-xkbswitch");
 end
 
 function config()
-  -- Shorten function name
   local keymap = vim.keymap.set;
 
   -- Options
@@ -13,7 +12,6 @@ function config()
   local term_opts = { silent = true }
 
   vim.g.XkbSwitchEnabled = 1;
-  -- vim.g.XkbSwitchLib = "/home/oleg/Develop/Private/skb-switch/target/debug/libskb_switch.so"
 
   -- Learn it the hard way
   keymap("", "<up>", "<nop>", {});
@@ -30,12 +28,10 @@ function config()
   keymap("n", "<C-k>", ":wincmd k<CR>", opts);
   keymap("n", "<C-l>", ":wincmd l<CR>", opts);
 
-  -- Navigate buffers
-  keymap("n", "<S-l>", ":bnext<CR>", opts)
-  keymap("n", "<S-h>", ":bprevious<CR>", opts)
-
-  -- Close buffers
-  keymap("n", "<S-q>", "<cmd>bdelete!<CR>", opts)
+--   -- Navigate buffers
+--   keymap("n", "<S-l>", ":bnext<CR>", opts)
+--   keymap("n", "<S-h>", ":bprevious<CR>", opts)
+--   keymap("n", "<S-q>", "<cmd>bdelete!<CR>", opts)
 
   -- turn off search highlight
   keymap("n", "<Leader><space>", ":nohlsearch<CR>", opts)

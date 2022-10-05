@@ -1,4 +1,4 @@
--- plugins/telescope.lua
+-- settings/telescope.lua
 
 function install(use)
   use("nvim-telescope/telescope.nvim");

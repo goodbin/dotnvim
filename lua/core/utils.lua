@@ -1,24 +1,31 @@
--- core/utils
+local M = {}
 
-local M = {};
-
-function M.script_path()
-   local str = debug.getinfo(2, "S").source:sub(2)
-   return str:match("(.*/)")
+function M.error(msg)
+  vim.api.nvim_err_writeln(msg)
 end
 
-function M.load_module(name, callback)
-  local out = {};
-  local _GB = getfenv(0)
-  local P = {}
-  setmetatable(P, {__index = _GB})
-  setfenv(0, P)
-  local status_ok, module = pcall(require, name);
-  if status_ok then
-    callback(name, out, P);
+if jit ~= nil then
+  M.is_windows = jit.os == "Windows"
+else
+  M.is_windows = package.config:sub(1, 1) == "\\"
+end
+
+if M.is_windows and vim.o.shellslash then
+  M.use_shellslash = true
+else
+  M.use_shallslash = false
+end
+
+function M.get_separator()
+  if M.is_windows and not M.use_shellslash then
+    return "\\"
   end
-  setfenv(0, _GB);
-  return out;
+  return "/"
 end
 
-return M;
+function M.join(...)
+  local separator = M.get_separator()
+  return table.concat({ ... }, separator)
+end
+
+return M

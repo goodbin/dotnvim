@@ -1,14 +1,11 @@
--- settings/lualine
+-- settings/statusline
 
 function install(use)
-  use("nvim-lualine/lualine.nvim");
+  use({ "nvim-lualine/lualine.nvim", config = "lualine_config" })
 end
 
-function config()
-  local status_ok, lualine = pcall(require, "lualine")
-  if not status_ok then
-    return
-  end
+function lualine_config()
+  local lualine = require("lualine")
 
   local hide_in_width = function()
     return vim.fn.winwidth(0) > 80
@@ -24,37 +21,15 @@ function config()
     always_visible = true,
   }
 
-  local filetype = {
-    "filetype",
-    icons_enabled = false,
-    icon = nil,
-  }
-
-  local location = {
-    "location",
-    padding = 0,
-  }
-
   local diff = {
     "diff",
     colored = false,
     symbols = {
       added = " ",
       modified = " ",
-      removed = " "
+      removed = " ",
     },
     cond = hide_in_width,
-  }
-
-  local spaces = function()
-    return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
-  end
-
-  local mode = {
-    "mode",
-    fmt = function(str)
-      return "-- " .. str .. " --"
-    end,
   }
 
   local branch = {
@@ -65,8 +40,8 @@ function config()
 
   local lsp_server = {
     function()
-      local msg = "No Active Lsp";
-      local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+      local msg = "No Active Lsp"
+      local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
       local clients = vim.lsp.get_active_clients()
       if next(clients) == nil then
         return msg
@@ -77,38 +52,28 @@ function config()
           return client.name
         end
       end
-      return msg;
+      return msg
     end,
-    icon = " LSP:",
-  };
+    icon = " ",
+  }
 
   lualine.setup({
     options = {
       globalstatus = true,
       icons_enabled = true,
-      theme = "codedark",
+      theme = "auto",
       component_separators = { left = "|", right = "|" },
       section_separators = { left = "", right = "" },
-      disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
+      ignore_focus = { "alpha", "dashboard", "NvimTree", "Outline", "neo-tree" },
       always_divide_middle = true,
     },
     sections = {
-      lualine_a = { branch, diagnostics, lsp_server },
-      lualine_b = { mode },
-      lualine_c = {},
-      lualine_x = { diff, spaces, "encoding", filetype },
-      lualine_y = { location },
+      lualine_a = { "mode" },
+      lualine_b = { branch, lsp_server, diagnostics },
+      lualine_c = { { "filename", file_status = true, path = 1 } },
+      lualine_x = { "encoding", "fileformat", "filetype" },
+      lualine_y = { "location" },
       lualine_z = {},
     },
-    inactive_sections = {
-      lualine_a = {},
-      lualine_b = {},
-      lualine_c = { "filename" },
-      lualine_x = { "location" },
-      lualine_y = {},
-      lualine_z = {},
-    },
-    tabline = {},
-    extensions = {},
   })
 end

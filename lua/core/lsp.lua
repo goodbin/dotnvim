@@ -85,6 +85,8 @@ function M.on_attach(client, bufnr)
   end
 
   maps:register()
+
+  vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
 end
 
 return M

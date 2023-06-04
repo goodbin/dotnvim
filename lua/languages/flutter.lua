@@ -1,14 +1,12 @@
-enabled = false
+enabled = true
 
 function install(use)
-  -- use({ "dart-lang/dart-vim-plugin", config = "dart_config" });
-  -- manager.add("thosakwe/vim-flutter");
+  use({ "dart-lang/dart-vim-plugin", config = "dart_config" });
 end
 
 function dart_config()
   vim.g.dart_style_guide = 2
   vim.g.dart_trailing_comma_indent = true
-  -- vim.g.dart_format_on_save = true;
 end
 
 function flutter_config()

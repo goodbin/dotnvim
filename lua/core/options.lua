@@ -10,6 +10,7 @@ opt.shortmess:append "sI"
 opt.splitbelow = true           -- Splitting a new window below the current one
 opt.splitright = true           -- Splitting a new window at the right of the current one
 opt.cmdheight = 0               -- Hide command line unless needed
+opt.completeopt = { "menuone", "noselect" } -- Options for insert mode completion
 
 -- Identing
 local indent = 4
@@ -43,12 +44,15 @@ opt.swapfile = false            -- Disable use of swapfile for the buffer
 -- Folding
 opt.foldlevel = 99              -- Folding level
 
+-- Search
+opt.hlsearch = true             -- highlight all matches on previous search pattern
+opt.incsearch = true            -- incremntal search
+
+
 -- opt.encoding = "utf-8";                      -- the encoding setting
 -- opt.winbar = "%f";
 -- opt.backup = false;                          -- creates a backup file
 -- opt.writebackup = false;                     -- if a file is being edited by another program
--- opt.hlsearch = true;                         -- highlight all matches on previous search pattern
--- opt.incsearch = true;                        -- incremntal search
 -- opt.conceallevel = 0,                        -- so that `` is visible in markdown files
 -- opt.showcmd = false,                         -- show commands in status bar
 -- opt.list = true,
@@ -58,7 +62,6 @@ opt.foldlevel = 99              -- Folding level
 -- opt.colorcolumn = "100";                     -- Show 100 columns width limit
 --
 -- opt.backspace = vim.opt.backspace:append("nostop"), -- Dot't stop backspace at insert
--- opt.completeopt = { "menuone", "noselect" }, -- Options for insert mode completion
 -- opt.copyindent = true, -- Copy the previous indentation on autoindenting
 -- opt.fileencoding = "utf-8", -- File content encoding for the buffer
 -- opt.history = 100, -- Number of commands to remember in a history table

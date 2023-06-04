@@ -80,24 +80,23 @@ function cmp_config()
         luasnip.lsp_expand(args.body)
       end,
     },
-    completion = {
-      completeopt = "menu,menuone",
-      keyword_length = 2,
-    },
+    -- completion = {
+    --   -- keyword_length = 2,
+    -- },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
     },
     window = {
-      completion = { scrollbar = false },
+      completion = { scrollbar = true },
       documentation = cmp.config.window.bordered(border_opts),
     },
     sources = {
-      { name = "nvim_lsp" },
+      { name = "nvim_lsp", priority = 10 },
       { name = "luasnip" },
-      { name = "buffer", keyword_length = 3 },
       { name = "nvim_lua" },
       { name = "path" },
+      { name = "buffer", keyword_length = 3, priority = 1 },
     },
     mapping = {
       ["<CR>"] = cmp.mapping.confirm({ 

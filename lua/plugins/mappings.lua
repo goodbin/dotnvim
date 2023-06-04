@@ -4,12 +4,15 @@ function install(use)
   use({ "lyokha/vim-xkbswitch", init = "xkb_config", lazy = true, cmd = "EnableXkbSwitch" })
 end
 
+function init(opts)
+  vim.g.mapleader = " "
+end
+
 function xkb_config(sp)
   vim.g.XkbSwitchEnabled = true
 end
 
 function config()
-  vim.g.mapleader = " "
   vim.cmd("EnableXkbSwitch")
 
   local maps = mapping({ silent = true, noremap = true })

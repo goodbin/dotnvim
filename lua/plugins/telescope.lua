@@ -43,9 +43,9 @@ function telescope_config()
   })
 
   local builtin = require("telescope.builtin")
-  local maps = mapping()
+  local maps = mapping({ silent = true, noremap = true })
   maps:set("n", "<leader>fw", builtin.live_grep, { desc = "Search words" })
   maps:set("n", "<leader>ff", builtin.find_files, { desc = "Search files" })
   maps:set("n", "<leader>fc", builtin.grep_string, { desc = "Search for work under cursor" })
-  maps:register({ silent = true, noremap = true })
+  maps:register()
 end

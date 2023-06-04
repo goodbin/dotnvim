@@ -1,4 +1,5 @@
 local mapping = require("core/mapping")
+local icons = require("core/icons")
 
 function install(use)
   use({"nvim-tree/nvim-tree.lua", config = "nvim_tree_config"})
@@ -61,6 +62,17 @@ function nvim_tree_config()
       icons = {
         webdev_colors = true,
         git_placement = "after",
+        glyphs = {
+          git = {
+            unstaged = "",
+            staged = "✓",
+            unmerged = "",
+            renamed = "➜",
+            untracked = "",
+            deleted = "",
+            ignored = "◌",
+          },
+        },
       },
       indent_markers = {
         enable = false,
@@ -87,6 +99,7 @@ function nvim_tree_config()
     },
     view = {
       preserve_window_proportions = true,
+      adaptive_size = true,
       mappings = {
         custom_only = false,
       }
@@ -94,6 +107,21 @@ function nvim_tree_config()
   })
 
   vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
+  vim.api.nvim_create_autocmd("BufEnter", {
+    nested = true,
+    callback = function()
+      local api = require('nvim-tree.api')
+
+      if #vim.api.nvim_list_wins() == 1 and api.tree.is_tree_buf() then
+        vim.defer_fn(function()
+          vim.cmd("new")
+          api.tree.toggle({find_file = true, focus = true})
+          api.tree.toggle({find_file = true, focus = true})
+        end, 0)
+      end
+    end
+  })
 
   local maps = mapping({ silent = true, noremap = true })
   maps:set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle Explorer" })

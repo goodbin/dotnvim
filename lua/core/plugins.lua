@@ -82,6 +82,12 @@ function M.startup(callback)
     p.install(use, unpack(p._opts))
   end
 
+  for _, p in pairs(plugins) do
+    if type(p.init) == "function" then
+      p.init(p._opts)
+    end
+  end
+
   require("lazy").setup({
     spec = specs,
     performance = {

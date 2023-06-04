@@ -66,7 +66,8 @@ function lsp_config()
 
   local nvim_lsp = require("lspconfig")
   local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-  local capabilities = status_ok and cmp_nvim_lsp.default_capabilities() or vim.lsp.protocol.make_client_capabilities()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  local capabilities = status_ok and cmp_nvim_lsp.default_capabilities(capabilities)
 
   capabilities.textDocument.completion.completionItem = {
     documentationFormat = { "markdown", "plaintext" },
